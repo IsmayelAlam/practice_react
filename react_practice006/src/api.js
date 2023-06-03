@@ -7,6 +7,7 @@ const searchImage = async (term) => {
     },
     params: {
       query: term,
+      orientation: "portrait",
     },
   });
 
