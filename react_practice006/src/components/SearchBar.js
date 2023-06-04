@@ -20,10 +20,10 @@ export default function SearchBar({ onSubmit }) {
       <form onSubmit={handelFormSubmit}>
         <input
           type="text"
-          required
-          onChange={handleChange}
-          value={term}
           placeholder="Search images"
+          required
+          value={term}
+          onChange={handleChange}
         />
       </form>
     </div>
