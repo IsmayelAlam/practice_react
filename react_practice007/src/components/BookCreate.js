@@ -15,7 +15,7 @@ export default function BookCreate({ onCreate }) {
   };
 
   return (
-    <div>
+    <div className="book-create">
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">Title</label>
         <input
@@ -26,8 +26,11 @@ export default function BookCreate({ onCreate }) {
           value={title}
           onChange={handleChange}
           placeholder="Add new book"
+          className="input"
         />
-        <button type="submit">Add Book</button>
+        <button type="submit" className="button">
+          Add Book
+        </button>
       </form>
     </div>
   );
