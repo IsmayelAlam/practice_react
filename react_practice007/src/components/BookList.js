@@ -1,3 +1,3 @@
-export default function BookComponent() {
-  return <div>books</div>;
+export default function BookList() {
+  return <div>bookList</div>;
 }
