@@ -1,5 +1,16 @@
-import BookEdit from "./BookEdit";
+function BookShow({ book, onDelete }) {
+  const handleClick = () => {
+    onDelete(book.id);
+  };
 
-export default function BookShow({ book }) {
-  return <div className="book-show">{book.title}</div>;
+  return (
+    <div className="book-show">
+      <div className="actions">
+        <button className="delete" onClick={handleClick}></button>
+      </div>
+      {book.title}
+    </div>
+  );
 }
+
+export default BookShow;
