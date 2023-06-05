@@ -9,6 +9,7 @@ function Provider({ children }) {
   const fetchBooks = async () => {
     const response = await axios.get("http://localhost:3001/books");
     setBooks(response.data);
+    console.log("render");
   };
 
   const createBook = async (title) => {
@@ -39,7 +40,19 @@ function Provider({ children }) {
     );
   };
 
-  return <BooksContext.Provider value={{}}>{children}</BooksContext.Provider>;
+  const shearValues = {
+    books,
+    fetchBooks,
+    createBook,
+    deleteBook,
+    editBook,
+  };
+
+  return (
+    <BooksContext.Provider value={shearValues}>
+      {children}
+    </BooksContext.Provider>
+  );
 }
 
 export default BooksContext;
