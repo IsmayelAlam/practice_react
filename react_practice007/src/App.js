@@ -25,7 +25,11 @@ function App() {
     setBooks(newBooks);
   };
 
-  const deleteBook = (id) => setBooks(books.filter((book) => book.id !== id));
+  const deleteBook = async (id) => {
+    await axios.delete(`http://localhost:3001/books/${id}`);
+
+    setBooks(books.filter((book) => book.id !== id));
+  };
 
   const editBook = async (id, newTitle) => {
     const response = await axios.put(`http://localhost:3001/books/${id}`, {
@@ -34,7 +38,7 @@ function App() {
 
     setBooks(
       books.map((book) =>
-        book.id === id ? { ...book, title: newTitle } : book
+        book.id === id ? { ...book, ...response.data } : book
       )
     );
   };
