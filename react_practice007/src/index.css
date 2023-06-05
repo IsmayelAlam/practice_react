@@ -10726,6 +10726,7 @@ a.has-text-danger-dark:hover {
   position: relative;
   vertical-align: top;
   width: 20px;
+  z-index: 0;
 }
 .book-show .edit:after {
   color: #fff;

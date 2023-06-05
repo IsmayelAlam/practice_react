@@ -22,7 +22,7 @@ function BookShow({ book, onDelete, onEdit }) {
   return (
     <div className="book-show">
       <img
-        src={`https://picsum.photos/seed/${book.id + 100}/300/200`}
+        src={`https://picsum.photos/seed/${book.id + 100}/300/300`}
         alt="books"
       />
       <div>{content}</div>
