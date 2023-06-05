@@ -6,7 +6,10 @@ function App() {
   const [books, setBooks] = useState([]);
 
   const createBook = (title) => {
-    setBooks([...books, { id: books.length, title }]);
+    setBooks([
+      ...books,
+      { id: Math.floor(Math.random() * 1000000 + books.length), title },
+    ]);
   };
 
   const deleteBook = (id) => setBooks(books.filter((book) => book.id !== id));
