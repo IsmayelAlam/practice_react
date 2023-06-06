@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import className from "classnames";
 
 function Button({
   children,
@@ -11,8 +11,9 @@ function Button({
   rounded,
   ...rest
 }) {
-  const classes = classNames(
-    `px-3 py-1.5 m-5 border flex items-center ${rest.className}`,
+  const classes = className(
+    rest.customclass,
+    `px-3 py-1.5 border flex items-center `,
     {
       "bg-blue-500 border-blue-600 text-white": primary,
       "bg-gray-500 border-gray-600 text-white": secondary,
@@ -28,8 +29,6 @@ function Button({
       "text-red-500": outline && danger,
     }
   );
-
-  console.log(classes);
 
   return (
     <button className={classes} {...rest}>
