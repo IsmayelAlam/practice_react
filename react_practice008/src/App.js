@@ -1,5 +1,5 @@
 import Accordion from "./components/Accordion";
-import ButtonPage from "./pages/ButtonPage";
+// import ButtonPage from "./pages/ButtonPage";
 
 function App() {
   const items = [
@@ -14,7 +14,7 @@ function App() {
       id: 2,
     },
     {
-      label: "Is javascript better then react?",
+      label: "Is react better then javascript?",
       content: "React is a javascript library so it can't be better.",
       id: 3,
     },
