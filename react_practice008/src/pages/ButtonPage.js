@@ -7,22 +7,22 @@ function ButtonPage() {
   const handleLeave = () => console.log("leave");
 
   return (
-    <div className="bg-slate-700">
-      <Button outline primary onClick={handleClick} customclass="mb-5">
+    <div>
+      <Button primary onClick={handleClick}>
         <GoBell />
         Button 01
       </Button>
-      <Button outline secondary onMouseMove={handleMove}>
+      <Button secondary onMouseMove={handleMove}>
         Button 02
       </Button>
-      <Button rounded outline success onMouseLeave={handleLeave}>
+      <Button success rounded onMouseLeave={handleLeave}>
         <GoCheck />
         Button 03
       </Button>
-      <Button rounded outline warning>
+      <Button warning rounded customclass="mb-5">
         Button 04
       </Button>
-      <Button rounded outline danger>
+      <Button danger rounded outline>
         <GoAlert />
         Button 05
       </Button>
