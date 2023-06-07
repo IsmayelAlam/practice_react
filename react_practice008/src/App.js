@@ -6,10 +6,12 @@ import Route from "./components/Route";
 
 function App() {
   return (
-    <div className="bg-slate-700 h-screen">
-      <Link to="/accordion">Accordion</Link>
-      <Link to="/dropdown">Drop down</Link>
-      <Link to="/button">Button</Link>
+    <div className="bg-slate-700 h-screen flex gap-5 p-10">
+      <div>
+        <Link to="/accordion">Accordion</Link>
+        <Link to="/dropdown">Drop down</Link>
+        <Link to="/button">Button</Link>
+      </div>
 
       <Route path="/accordion">
         <AccordionPage />

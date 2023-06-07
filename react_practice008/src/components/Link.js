@@ -4,7 +4,8 @@ import NavContext from "../contexts/navContext";
 function Link({ to, children }) {
   const { navigate } = useContext(NavContext);
 
-  console.log(navigate);
+  const classes =
+    "border rounded shadow cursor-pointer bg-gray-300 py-3 px-5 mb-2 w-full flex";
 
   const handleClick = (event) => {
     event.preventDefault();
@@ -12,7 +13,11 @@ function Link({ to, children }) {
     navigate(to);
   };
 
-  return <a onClick={handleClick}>{children}</a>;
+  return (
+    <a onClick={handleClick} className={classes}>
+      {children}
+    </a>
+  );
 }
 
 export default Link;

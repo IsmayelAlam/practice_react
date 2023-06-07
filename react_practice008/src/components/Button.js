@@ -13,7 +13,7 @@ function Button({
 }) {
   const classes = className(
     rest.customclass,
-    `px-3 py-1.5 border flex items-center `,
+    `px-3 py-1.5 border flex items-center mb-2`,
     {
       "bg-blue-500 border-blue-600 text-white": primary,
       "bg-gray-500 border-gray-600 text-white": secondary,
