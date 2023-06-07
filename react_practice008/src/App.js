@@ -3,6 +3,7 @@ import AccordionPage from "./pages/AccordionPage";
 import DropDownPage from "./pages/DropDownPage";
 import Link from "./components/Link";
 import Route from "./components/Route";
+import ModalPage from "./pages/ModalPage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Link to="/accordion">Accordion</Link>
         <Link to="/dropdown">Drop down</Link>
         <Link to="/button">Button</Link>
+        <Link to="/modal">Modal</Link>
       </div>
 
       <Route path="/accordion">
@@ -21,6 +23,9 @@ function App() {
       </Route>
       <Route path="/button">
         <ButtonPage />
+      </Route>
+      <Route path="/modal">
+        <ModalPage />
       </Route>
     </div>
   );
