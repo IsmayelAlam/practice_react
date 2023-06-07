@@ -1,8 +1,8 @@
 // import ButtonPage from "./pages/ButtonPage";
 // import AccordionPage from "./pages/AccordionPage";
+import DropDown from "./components/DropDown";
 
 import { useState } from "react";
-import DropDown from "./components/DropDown";
 
 function App() {
   const [selected, setSelected] = useState(null);
@@ -18,7 +18,8 @@ function App() {
   };
 
   return (
-    <div className="bg-slate-700 h-screen">
+    <div className="bg-slate-700 h-screen flex">
+      <DropDown options={options} onChange={handleSelect} value={selected} />
       <DropDown options={options} onChange={handleSelect} value={selected} />
     </div>
   );

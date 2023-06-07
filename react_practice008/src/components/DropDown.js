@@ -1,9 +1,24 @@
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { GoChevronDown } from "react-icons/go";
 import className from "classnames";
 
 function DropDown({ options, onChange, value }) {
   const [isOpen, setIsOpen] = useState(false);
+  const divEl = useRef();
+
+  useEffect(() => {
+    const handler = (event) => {
+      if (!divEl.current) return;
+
+      if (!divEl.current.contains(event.target)) setIsOpen(false);
+    };
+
+    document.addEventListener("click", handler, true);
+
+    return () => {
+      document.removeEventListener("click", handler);
+    };
+  }, []);
 
   const handleOption = (value) => {
     onChange(value);
@@ -25,7 +40,7 @@ function DropDown({ options, onChange, value }) {
   ));
 
   return (
-    <div className="w-48 relative">
+    <div className="w-48 relative" ref={divEl}>
       <div
         onClick={() => setIsOpen(!isOpen)}
         className={"flex justify-between items-center " + classes}
