@@ -14,7 +14,7 @@ function Link({ to, children }) {
   };
 
   return (
-    <a onClick={handleClick} className={classes}>
+    <a onClick={handleClick} href={to} className={classes}>
       {children}
     </a>
   );
