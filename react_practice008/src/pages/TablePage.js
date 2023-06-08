@@ -9,7 +9,18 @@ function TablePage() {
     { name: "Berry", color: "bg-pink-500", score: 2 },
   ];
 
-  return <Table data={fruits} />;
+  const config = [
+    { label: "Name", render: (fruit) => fruit.name },
+    {
+      label: "Color",
+      render: (fruit) => <div className={`${fruit.color} h-5 w-5 rounded`} />,
+    },
+    { label: "Score", render: (fruit) => fruit.score },
+  ];
+
+  const keyFN = (fruit) => fruit.label;
+
+  return <Table data={fruits} config={config} keyFN={keyFN} />;
 }
 
 export default TablePage;

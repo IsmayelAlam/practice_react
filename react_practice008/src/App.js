@@ -8,7 +8,7 @@ import TablePage from "./pages/TablePage";
 
 function App() {
   return (
-    <div className="bg-slate-700 h-screen flex gap-5 p-10">
+    <div className="flex gap-5 p-10">
       <div>
         <Link to="/accordion">Accordion</Link>
         <Link to="/dropdown">Drop down</Link>
