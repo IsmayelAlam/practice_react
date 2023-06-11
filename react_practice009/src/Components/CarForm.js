@@ -14,7 +14,8 @@ function CarForm() {
 
   const handleNameChange = (event) => dispatch(changeName(event.target.value));
 
-  const handleCostChange = (event) => dispatch(changeCost(event.target.value));
+  const handleCostChange = (event) =>
+    dispatch(changeCost(Number(event.target.value)));
 
   const handleSubmit = (event) => {
     event.preventDefault();
