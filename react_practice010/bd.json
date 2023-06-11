@@ -1,5 +1,14 @@
 {
-  "user": [],
+  "users": [
+    {
+      "id": 1,
+      "name": "Maya"
+    },
+    {
+      "id": 2,
+      "name": "Himel"
+    }
+  ],
   "albums": [],
   "photos": []
 }
