@@ -1,9 +1,5 @@
 function App() {
-  return (
-    <div>
-      <p className="title">Personal Digital Assistants</p>
-    </div>
-  );
+  return <div>hi</div>;
 }
 
 export default App;
