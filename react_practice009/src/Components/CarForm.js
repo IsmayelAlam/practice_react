@@ -5,7 +5,7 @@ import { changeCost, changeName, addCar } from "../store";
 function CarForm() {
   const dispatch = useDispatch();
 
-  const { name, cost } = useSelector((state) => {
+  let { name, cost } = useSelector((state) => {
     return {
       name: state.form.name,
       cost: state.form.cost,
@@ -23,7 +23,7 @@ function CarForm() {
   };
 
   return (
-    <div className="car-from panel">
+    <div className="car-form panel">
       <h4 className="subtitle is-3">Add Cars</h4>
       <form onSubmit={handleSubmit}>
         <div className="field-group">
