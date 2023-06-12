@@ -4,7 +4,7 @@ import { removeUser } from "../store";
 import useThunk from "../hooks/useThunk";
 
 export default function UsersListItem({ user }) {
-  const [doRemoveUser, isLoading, error] = useThunk(removeUser);
+  const [doRemoveUser, isLoading] = useThunk(removeUser);
 
   const handleDelete = () => {
     doRemoveUser(user);

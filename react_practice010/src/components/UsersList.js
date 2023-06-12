@@ -1,4 +1,4 @@
-import { addUser, fetchUsers, removeUser } from "../store";
+import { addUser, fetchUsers } from "../store";
 import useThunk from "../hooks/useThunk";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
