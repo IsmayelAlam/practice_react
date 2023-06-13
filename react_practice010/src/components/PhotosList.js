@@ -13,12 +13,16 @@ export default function PhotosList({ album }) {
   };
 
   let content;
-  if (isFetching) content = <Skeleton className="h=8 w-10%" />;
-  else if (error) content = <div>error fetching data.</div>;
-  else
+
+  if (isFetching) {
+    content = <Skeleton className="h-20 w-20" times={10} />;
+  } else if (error) {
+    content = <div>error fetching data.</div>;
+  } else {
     content = data.map((photo) => (
       <PhotosListItem key={photo.id} photo={photo} />
     ));
+  }
 
   return (
     <div>
@@ -28,7 +32,9 @@ export default function PhotosList({ album }) {
           + Add photos
         </Button>
       </div>
-      <div>{content}</div>
+      <div className="flex flex-wrap flex-row justify-center gap-2">
+        {content}
+      </div>
     </div>
   );
 }
