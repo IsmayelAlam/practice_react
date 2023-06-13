@@ -7,7 +7,7 @@ export default function ExpandablePanel({ header, children }) {
   const handleExpand = () => setExpanded(!expanded);
 
   return (
-    <div className="mb-2 rounded bg-slate-700 text-white">
+    <div className="mb-2 rounded bg-slate-700 text-white ">
       <div className="flex p-2 justify-between items-center">
         <div className="flex flex-row items-center justify-between gap-3">
           {header}
@@ -16,7 +16,7 @@ export default function ExpandablePanel({ header, children }) {
           {expanded ? <GoChevronDown /> : <GoChevronLeft />}
         </div>
       </div>
-      {expanded && <div className="p-2 border-t">{children}</div>}
+      {expanded && <div className="p-2 border rounded">{children}</div>}
     </div>
   );
 }

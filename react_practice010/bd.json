@@ -25,6 +25,32 @@
       "id": "aHgpD-06W7415BABO3_hf"
     }
   ],
-  "albums": [{ "id": 10, "title": "trip", "userid": "SYHwr207upF4u5evyiznx" }],
+  "albums": [
+    {
+      "userId": "mFrGThEj7ai6Hj6Qgm6BE",
+      "title": "Luxurious Concrete Shirt",
+      "id": 1
+    },
+    {
+      "userId": "mFrGThEj7ai6Hj6Qgm6BE",
+      "title": "Intelligent Bronze Tuna",
+      "id": 2
+    },
+    {
+      "userId": "mFrGThEj7ai6Hj6Qgm6BE",
+      "title": "Refined Rubber Gloves",
+      "id": 3
+    },
+    {
+      "userId": "mFrGThEj7ai6Hj6Qgm6BE",
+      "title": "Recycled Plastic Soap",
+      "id": 4
+    },
+    {
+      "userId": "mFrGThEj7ai6Hj6Qgm6BE",
+      "title": "Oriental Rubber Table",
+      "id": 5
+    }
+  ],
   "photos": []
 }
