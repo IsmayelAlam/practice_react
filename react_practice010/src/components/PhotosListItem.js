@@ -2,7 +2,7 @@ import { GoTrashcan } from "react-icons/go";
 import { useDeletePhotoMutation } from "../store";
 
 export default function PhotosListItem({ photo }) {
-  const [removePhoto, resultRemovePhoto] = useDeletePhotoMutation();
+  const [removePhoto] = useDeletePhotoMutation();
 
   const handleDeletePhoto = () => removePhoto(photo);
 
