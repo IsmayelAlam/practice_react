@@ -48,7 +48,38 @@
       "userId": "JLDn0u-2l02mwXTTxK5Y9",
       "title": "Handcrafted Soft Bike",
       "id": 15
+    },
+    {
+      "userId": "rGUsUNy8wGYDLS6tFng17",
+      "title": "Licensed Granite Salad",
+      "id": 16
     }
   ],
-  "photos": []
+  "photos": [
+    {
+      "albumId": 7,
+      "url": "https://loremflickr.com/150/150/abstract?lock=2753509541806080",
+      "id": 1
+    },
+    {
+      "albumId": 7,
+      "url": "https://loremflickr.com/150/150/abstract?lock=5903697112465408",
+      "id": 2
+    },
+    {
+      "albumId": 11,
+      "url": "https://loremflickr.com/150/150/abstract?lock=3839742034575360",
+      "id": 3
+    },
+    {
+      "albumId": 11,
+      "url": "https://loremflickr.com/150/150/abstract?lock=7975888167632896",
+      "id": 4
+    },
+    {
+      "albumId": 7,
+      "url": "https://loremflickr.com/150/150/abstract?lock=5771401608822784",
+      "id": 5
+    }
+  ]
 }

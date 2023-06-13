@@ -12,44 +12,48 @@ const photosApi = createApi({
   endpoints(builder) {
     return {
       fetchPhotos: builder.query({
-        providesTags: (result, error, user) => {
-          return [{ type: "Album", id: user.id }];
-        },
-        query: (user) => {
+        //    providesTags: (result, error, user) => {
+        //      return [{ type: "Photo", id: user.id }];
+        //    },
+        query: (album) => {
           return {
             url: "/photos",
             params: {
-              userId: user.id,
+              albumId: album.id,
             },
             method: "GET",
           };
         },
       }),
 
-      createAlbum: builder.mutation({
-        invalidatesTags: (result, error, user) => {
-          return [{ type: "Album", id: user.id }];
-        },
-        query: (user) => {
+      addPhoto: builder.mutation({
+        //    invalidatesTags: (result, error, user) => {
+        //      return [{ type: "Photo", id: user.id }];
+        //    },
+        query: (album) => {
           return {
             url: "/photos",
             method: "POST",
             body: {
-              userId: user.id,
-              title: faker.commerce.productName(),
+              albumId: album.id,
+              url: faker.image.urlLoremFlickr({
+                category: "abstract",
+                height: 150,
+                width: 150,
+              }),
               id: nanoid,
             },
           };
         },
       }),
 
-      deleteAlbum: builder.mutation({
-        invalidatesTags: (result, error, album) => {
-          return [{ type: "Album", id: album.userId }];
-        },
-        query: (album) => {
+      deletePhoto: builder.mutation({
+        //    invalidatesTags: (result, error, photo) => {
+        //      return [{ type: "Photo", id: photo.userId }];
+        //    },
+        query: (photo) => {
           return {
-            url: `/photos/${album.id}`,
+            url: `/photos/${photo.id}`,
             method: "DELETE",
           };
         },
@@ -60,8 +64,8 @@ const photosApi = createApi({
 
 export const {
   useFetchPhotosQuery,
-  useCreateAlbumMutation,
-  useDeleteAlbumMutation,
+  useAddPhotoMutation,
+  useDeletePhotoMutation,
 } = photosApi;
 
 export { photosApi };
