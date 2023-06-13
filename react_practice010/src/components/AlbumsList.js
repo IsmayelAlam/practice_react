@@ -4,8 +4,8 @@ import {
   useCreateAlbumMutation,
   useDeleteAlbumMutation,
 } from "../store";
-import ExpandablePanel from "./ExpandablePanel";
 import Skeleton from "./Skeleton";
+import AlbumListItem from "./AlbumsListItem";
 
 export default function AlbumsList({ user }) {
   const { data, error, isLoading } = useFetchAlbumsQuery(user);
@@ -22,14 +22,9 @@ export default function AlbumsList({ user }) {
   } else if (error) {
     content = <div>Error loading albums.</div>;
   } else {
-    content = data.map((album) => {
-      const header = <div>{album.title}</div>;
-      return (
-        <ExpandablePanel key={album.id} header={header}>
-          list of photos.
-        </ExpandablePanel>
-      );
-    });
+    content = data.map((album) => (
+      <AlbumListItem key={album.id} album={album} />
+    ));
   }
 
   return (
