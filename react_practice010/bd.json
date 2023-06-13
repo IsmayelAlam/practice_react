@@ -3,45 +3,28 @@
     {
       "name": "Norma Daniel",
       "id": "wWZhbG1XxhmPyKjyvLx2n"
-    },
-    {
-      "name": "Julie Wehner",
-      "id": "Awm8Fn47PiIcdGbQihVhc"
-    },
-    {
-      "name": "Neil Haley Jr.",
-      "id": "qZiB1t6iTBJPivG6l24XI"
-    },
-    {
-      "name": "Eduardo Pollich",
-      "id": "N2yGsZS49WJHt6KAAzdmP"
     }
   ],
   "albums": [
     {
       "userId": "wWZhbG1XxhmPyKjyvLx2n",
-      "title": "Gorgeous Plastic Salad",
-      "id": 1
+      "title": "Bespoke Fresh Pizza",
+      "id": 7
     },
     {
       "userId": "wWZhbG1XxhmPyKjyvLx2n",
-      "title": "Small Frozen Chicken",
-      "id": 2
+      "title": "Refined Wooden Pizza",
+      "id": 8
     },
     {
       "userId": "wWZhbG1XxhmPyKjyvLx2n",
-      "title": "Handmade Wooden Ball",
-      "id": 3
+      "title": "Electronic Wooden Keyboard",
+      "id": 9
     },
     {
       "userId": "wWZhbG1XxhmPyKjyvLx2n",
-      "title": "Modern Rubber Bike",
-      "id": 4
-    },
-    {
-      "userId": "wWZhbG1XxhmPyKjyvLx2n",
-      "title": "Intelligent Fresh Ball",
-      "id": 5
+      "title": "Electronic Plastic Pizza",
+      "id": 10
     }
   ],
   "photos": []
