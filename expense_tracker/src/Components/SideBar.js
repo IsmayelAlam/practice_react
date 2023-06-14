@@ -13,11 +13,11 @@ export default function SideBar() {
         <h2 className="font-bold text-center text-xl">Cash Flow</h2>
         <div className="p-10 border-2 border-green-600 rounded-md uppercase my-5 text-green-600 font-bold shadow-md text-center">
           <p>Income</p>
-          <p className="text-3xl font-normal">$6270</p>
+          <p className="text-3xl font-normal">$8270</p>
         </div>
         <div className="p-10 border-2 border-red-600 rounded-md uppercase my-5 text-red-600 font-bold shadow-md text-center">
           <p>Expense</p>
-          <p className="text-3xl font-normal">$5250</p>
+          <p className="text-3xl font-normal">$7250</p>
         </div>
       </div>
     </div>
