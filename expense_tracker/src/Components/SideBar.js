@@ -7,17 +7,17 @@ export default function SideBar() {
       <hr className="border border-stone-600" />
       <div className="mt-20">
         <h2 className="font-bold">Your Balance</h2>
-        <p className="text-5xl m-2">$ 750</p>
+        <p className="text-5xl m-2">$ 1020</p>
       </div>
       <div className="my-20">
         <h2 className="font-bold text-center text-xl">Cash Flow</h2>
         <div className="p-10 border-2 border-green-600 rounded-md uppercase my-5 text-green-600 font-bold shadow-md text-center">
           <p>Income</p>
-          <p className="text-3xl font-normal">$1950</p>
+          <p className="text-3xl font-normal">$6270</p>
         </div>
         <div className="p-10 border-2 border-red-600 rounded-md uppercase my-5 text-red-600 font-bold shadow-md text-center">
           <p>Expense</p>
-          <p className="text-3xl font-normal">$1250</p>
+          <p className="text-3xl font-normal">$5250</p>
         </div>
       </div>
     </div>
