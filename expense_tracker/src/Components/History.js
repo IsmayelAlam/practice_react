@@ -1,12 +1,12 @@
-import { FaSort } from "react-icons/fa";
-// FaSortDown, FaSortUp,
+// import { FaSort } from "react-icons/fa";
+// FaSortDown, FaSortUp,<FaSort className="h-5 w-5 m-0" /> <FaSort className="h-5 w-5 m-0" />
 
 import ExpenseLog from "./ExpenseLog";
 import { useContext } from "react";
 import expenseDataContext from "./context/expenseDataContext";
 
 export default function History() {
-  const { expenseData, deleteExpenseLog } = useContext(expenseDataContext);
+  const { expenseData } = useContext(expenseDataContext);
 
   return (
     <div className="col-start-2 col-end-6 row-start-1 row-end-5 overflow-y-scroll overflow-x-hidden scrollbar relative">
@@ -18,10 +18,10 @@ export default function History() {
             <th>index</th>
             <th>description</th>
             <th className="flex justify-center items-center gap-2">
-              <FaSort className="h-5 w-5 m-0" /> <span>date</span>
+              <span>date</span>
             </th>
             <th className="flex justify-center items-center gap-2">
-              <FaSort className="h-5 w-5 m-0" /> <span>amount</span>
+              <span>amount</span>
             </th>
             <th></th>
           </tr>
@@ -29,14 +29,7 @@ export default function History() {
 
         <tbody className="my-10 uppercase w-full bg-black font-bold absolute">
           {expenseData.map((data, i) => {
-            return (
-              <ExpenseLog
-                data={data}
-                i={i}
-                key={data.id}
-                ondelete={deleteExpenseLog}
-              />
-            );
+            return <ExpenseLog data={data} i={i} key={data.id} />;
           })}
         </tbody>
       </table>

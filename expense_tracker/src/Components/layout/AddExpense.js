@@ -19,23 +19,26 @@ const reducer = (state, action) => {
     case ADD_TYPE:
       return { ...state, type: action.payload };
     default:
-      throw Error("unknown dispatch type ");
+      return initState;
   }
 };
 
+const initState = {
+  id: "",
+  title: "",
+  date: "",
+  amount: "",
+  type: "",
+};
+
 export default function AddExpense() {
-  const [state, dispatch] = useReducer(reducer, {
-    id: "",
-    title: "",
-    date: "",
-    amount: "",
-    type: "",
-  });
+  const [state, dispatch] = useReducer(reducer, initState);
 
   const { addExpenseLog } = useContext(expenseDataContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    dispatch({});
     addExpenseLog({ ...state, id: nanoid() });
     event.target.reset();
   };
@@ -55,6 +58,7 @@ export default function AddExpense() {
       <Input
         title="amount"
         type="number"
+        value={+state?.amount < 1 ? "" : state.amount}
         onChange={(event) =>
           dispatch({ type: ADD_AMOUNT, payload: event.target.value })
         }
