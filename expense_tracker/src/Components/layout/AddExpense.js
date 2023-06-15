@@ -13,19 +13,19 @@ const reducer = (state, action) => {
     case ADD_TITLE:
       return { ...state, title: action.payload };
     case ADD_AMOUNT:
-      return { ...state, amount: action.payload };
+      return { ...state, amount: +action.payload };
     case ADD_DATE:
       return { ...state, date: action.payload };
     case ADD_TYPE:
       return { ...state, type: action.payload };
     default:
-      throw new Error("unknown action " + action.type);
+      return { ...state, id: nanoid() };
   }
 };
 
 export default function AddExpense() {
   const [state, dispatch] = useReducer(reducer, {
-    id: nanoid(),
+    id: "",
     title: "",
     date: "",
     amount: "",
@@ -36,6 +36,8 @@ export default function AddExpense() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    dispatch(state);
+    console.log(state);
     addExpenseLog(state);
     event.target.reset();
   };

@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { FaTrashAlt } from "react-icons/fa";
+import expenseDataContext from "./context/expenseDataContext";
 
 export default function ExpenseLog({ data, i }) {
   const bg = i % 3 === 0 ? "bg-slate-500" : "bg-slate-700";
+
+  const { deleteExpenseLog } = useContext(expenseDataContext);
 
   return (
     <tr
@@ -23,7 +27,10 @@ export default function ExpenseLog({ data, i }) {
         {data.amount}
       </td>
 
-      <td className="border-l-2 border-y py-2 px-2 cursor-pointer ">
+      <td
+        className="border-l-2 border-y py-2 px-2 cursor-pointer"
+        onClick={deleteExpenseLog.bind(null, data.id)}
+      >
         <FaTrashAlt className="h-7 w-7" />
       </td>
     </tr>

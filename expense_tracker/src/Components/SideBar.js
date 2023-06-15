@@ -1,4 +1,12 @@
+import { useContext, useState } from "react";
+import expenseDataContext from "./context/expenseDataContext";
+
 export default function SideBar() {
+  const [total, setTotal] = useState(0);
+  const { balance } = useContext(expenseDataContext);
+
+  const b = balance();
+
   return (
     <div className="row-span-full p-10 select-none flex flex-col border-r-2 border-slate-600 shadow">
       <h1 className="text-center text-3xl uppercase p-5 font-semibold">
@@ -8,7 +16,7 @@ export default function SideBar() {
 
       <div className="mt-20">
         <h2 className="font-bold">Your Balance</h2>
-        <p className="text-5xl m-2">$ 1020</p>
+        <p className="text-5xl m-2">$ {b}</p>
       </div>
 
       <div className="my-20">
