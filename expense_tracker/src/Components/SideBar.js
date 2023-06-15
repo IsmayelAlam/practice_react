@@ -5,10 +5,12 @@ export default function SideBar() {
         Expense tracker
       </h1>
       <hr className="border border-stone-600" />
+
       <div className="mt-20">
         <h2 className="font-bold">Your Balance</h2>
         <p className="text-5xl m-2">$ 1020</p>
       </div>
+
       <div className="my-20">
         <h2 className="font-bold text-center text-xl">Cash Flow</h2>
         <div className="p-10 border-2 border-green-600 rounded-md uppercase my-5 text-green-600 font-bold shadow-md text-center">

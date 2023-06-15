@@ -1,4 +1,5 @@
-import { BsFillTrashFill } from "react-icons/bs";
+import { FaSort, FaSortDown, FaSortUp, FaTrashAlt } from "react-icons/fa";
+
 import { nanoid } from "nanoid";
 
 export default function History() {
@@ -9,19 +10,23 @@ export default function History() {
     <div className="col-start-2 col-end-6 row-start-1 row-end-5 overflow-y-scroll overflow-x-hidden scrollbar relative">
       <table className="border-collapse">
         <thead>
-          <tr className={`fixed w-4/5 z-10 bg-slate-700 py-2 ${className}`}>
+          <tr className={`fixed w-4/5 z-10 bg-slate-800 py-2 ${className}`}>
             <th>index</th>
             <th>description</th>
-            <th>date</th>
-            <th>amount</th>
+            <th className="flex justify-center items-center gap-2">
+              <FaSort className="h-5 w-5 m-0" /> <span>date</span>
+            </th>
+            <th className="flex justify-center items-center gap-2">
+              <FaSort className="h-5 w-5 m-0" /> <span>amount</span>
+            </th>
             <th></th>
           </tr>
         </thead>
 
         <tbody className="my-10 z-0 uppercase w-full bg-black font-bold absolute">
-          {datas.map((data, i) => {
-            console.log(`bg-slate-${(i % 3) + 5}00`);
-            const bg = i % 3 === 0 ? "bg-slate-600" : "bg-slate-800";
+          {expenseData.map((data, i) => {
+            const bg = i % 3 === 0 ? "bg-slate-500" : "bg-slate-700";
+
             return (
               <tr className={`w-full ${bg} ${className}`} key={data.id}>
                 <td className="border-r-2 border-y py-2 px-2">{i + 1}</td>
@@ -38,7 +43,7 @@ export default function History() {
                   {data.amount}
                 </td>
                 <td className="border-l-2 border-y py-2 px-2 cursor-pointer ">
-                  <BsFillTrashFill className="h-7 w-7" />
+                  <FaTrashAlt className="h-7 w-7" />
                 </td>
               </tr>
             );
@@ -49,7 +54,7 @@ export default function History() {
   );
 }
 
-const datas = [
+const expenseData = [
   {
     id: nanoid(),
     title: "Car sell",
