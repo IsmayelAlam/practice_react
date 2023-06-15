@@ -1,4 +1,5 @@
-import { FaSort, FaSortDown, FaSortUp, FaTrashAlt } from "react-icons/fa";
+import { FaSort, FaTrashAlt } from "react-icons/fa";
+// FaSortDown, FaSortUp,
 
 import { nanoid } from "nanoid";
 

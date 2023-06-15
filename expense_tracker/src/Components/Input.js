@@ -1,4 +1,4 @@
-export default function Input({ title, type, name }) {
+export default function Input({ title, type, name, ...rest }) {
   return (
     <div
       className={`flex gap-2 capitalize text-lg w-1/5 ${
@@ -14,6 +14,7 @@ export default function Input({ title, type, name }) {
         name={name}
         required
         placeholder={title}
+        {...rest}
         className={`rounded p-2 border-b-4 border-slate-500 bg-slate-300 valid:border-green-400 ${
           name ? "" : "shadow"
         }`}

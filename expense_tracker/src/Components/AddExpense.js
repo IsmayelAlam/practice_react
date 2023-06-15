@@ -10,19 +10,15 @@ const ADD_TYPE = "add_type";
 const reducer = (state, action) => {
   switch (action.type) {
     case ADD_TITLE:
-      state.title = action.payload;
-      return;
+      return { ...state, title: action.payload };
     case ADD_AMOUNT:
-      state.title = action.payload;
-      return;
+      return { ...state, amount: action.payload };
     case ADD_DATE:
-      state.title = action.payload;
-      return;
+      return { ...state, date: action.payload };
     case ADD_TYPE:
-      state.title = action.payload;
-      return;
+      return { ...state, type: action.payload };
     default:
-      console.log(state);
+      return console.log(state);
   }
 };
 
@@ -35,16 +31,42 @@ export default function AddExpense() {
     type: "",
   });
 
-  console.log(state);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(state);
+  };
+
+  const handleTitleChange = (event) =>
+    dispatch({ type: ADD_TITLE, payload: event.target.value });
+  const handleAmountChange = (event) =>
+    dispatch({ type: ADD_AMOUNT, payload: event.target.value });
+  const handleDateChange = (event) =>
+    dispatch({ type: ADD_DATE, payload: event.target.value });
+  const handleTypeChange = (event) =>
+    dispatch({ type: ADD_TYPE, payload: event.target.id });
+
   return (
-    <form className="w-full flex gap-10 items-center px-10 col-start-2 col-end-6 border-t-2 bg-white">
-      <Input title="title" type="text" />
-      <Input title="amount" type="number" />
-      <Input title="date" type="date" />
+    <form
+      className="w-full flex gap-10 items-center px-10 col-start-2 col-end-6 border-t-2 bg-white"
+      onSubmit={handleSubmit}
+    >
+      <Input title="title" type="text" onChange={handleTitleChange} />
+      <Input title="amount" type="number" onChange={handleAmountChange} />
+      <Input title="date" type="date" onChange={handleDateChange} />
 
       <div className="flex flex-col">
-        <Input type="radio" name="type" title="income" />
-        <Input type="radio" name="type" title="expense" />
+        <Input
+          type="radio"
+          name="type"
+          title="income"
+          onChange={handleTypeChange}
+        />
+        <Input
+          type="radio"
+          name="type"
+          title="expense"
+          onChange={handleTypeChange}
+        />
       </div>
 
       <button
