@@ -13,15 +13,7 @@ function ExpenseDataProvider({ children }) {
     setDate(expenseData.filter((log) => id !== log.id));
   };
 
-  const balance = () => {
-    if (expenseData.length < 1) return;
-    expenseData.reduce((total, log) => {
-      if (log.type === "income") return total + log.amount;
-      if (log.type === "expense") return total - log.amount;
-    });
-  };
-
-  const value = { expenseData, addExpenseLog, balance, deleteExpenseLog };
+  const value = { expenseData, addExpenseLog, deleteExpenseLog };
 
   return (
     <expenseDataContext.Provider value={value}>

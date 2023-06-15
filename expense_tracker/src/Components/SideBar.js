@@ -1,11 +1,36 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import expenseDataContext from "./context/expenseDataContext";
 
 export default function SideBar() {
-  const [total, setTotal] = useState(0);
-  const { balance } = useContext(expenseDataContext);
+  const { expenseData } = useContext(expenseDataContext);
 
-  const b = balance();
+  const totalBalance =
+    expenseData.length > 0
+      ? expenseData.reduce((total, log) => {
+          if (log.type === "income") total += log.amount;
+          if (log.type === "expense") total -= log.amount;
+
+          return total;
+        }, 0)
+      : "000";
+
+  const totalIncome =
+    expenseData.length > 0
+      ? expenseData.reduce((total, log) => {
+          if (log.type === "income") total += log.amount;
+
+          return total;
+        }, 0)
+      : "000";
+
+  const totalExpense =
+    expenseData.length > 0
+      ? expenseData.reduce((total, log) => {
+          if (log.type === "expense") total += log.amount;
+
+          return total;
+        }, 0)
+      : "000";
 
   return (
     <div className="row-span-full p-10 select-none flex flex-col border-r-2 border-slate-600 shadow">
@@ -16,18 +41,18 @@ export default function SideBar() {
 
       <div className="mt-20">
         <h2 className="font-bold">Your Balance</h2>
-        <p className="text-5xl m-2">$ {b}</p>
+        <p className="text-5xl m-2">$ {totalBalance}</p>
       </div>
 
       <div className="my-20">
         <h2 className="font-bold text-center text-xl">Cash Flow</h2>
         <div className="p-10 border-2 border-green-600 rounded-md uppercase my-5 text-green-600 font-bold shadow-md text-center">
           <p>Income</p>
-          <p className="text-3xl font-normal">$8270</p>
+          <p className="text-3xl font-normal">$ {totalIncome}</p>
         </div>
         <div className="p-10 border-2 border-red-600 rounded-md uppercase my-5 text-red-600 font-bold shadow-md text-center">
           <p>Expense</p>
-          <p className="text-3xl font-normal">$7250</p>
+          <p className="text-3xl font-normal">$ {totalExpense}</p>
         </div>
       </div>
     </div>

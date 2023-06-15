@@ -19,7 +19,7 @@ const reducer = (state, action) => {
     case ADD_TYPE:
       return { ...state, type: action.payload };
     default:
-      return { ...state, id: nanoid() };
+      throw Error("unknown dispatch type ");
   }
 };
 
@@ -36,9 +36,7 @@ export default function AddExpense() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(state);
-    console.log(state);
-    addExpenseLog(state);
+    addExpenseLog({ ...state, id: nanoid() });
     event.target.reset();
   };
 
