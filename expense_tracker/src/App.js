@@ -6,8 +6,8 @@ function App() {
   return (
     <div className="h-screen w-screen grid grid-cols-5 grid-rows-5 overflow-hidden">
       <SideBar />
-      <AddExpense />
       <History />
+      <AddExpense />
     </div>
   );
 }

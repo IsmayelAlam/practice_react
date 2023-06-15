@@ -48,7 +48,7 @@ export default function AddExpense() {
 
   return (
     <form
-      className="w-full flex gap-10 items-center px-10 col-start-2 col-end-6 border-t-2 bg-white"
+      className="w-full flex gap-10 items-center px-10 col-start-2 col-end-6 border-t-2 bg-white z-10"
       onSubmit={handleSubmit}
     >
       <Input title="title" type="text" onChange={handleTitleChange} />
