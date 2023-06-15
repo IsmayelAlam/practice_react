@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import expenseDataContext from "./context/expenseDataContext";
+import expenseDataContext from "../context/expenseDataContext";
 
 export default function SideBar() {
   const { expenseData } = useContext(expenseDataContext);

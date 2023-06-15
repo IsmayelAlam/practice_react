@@ -1,6 +1,6 @@
 import AddExpense from "./Components/layout/AddExpense";
 import History from "./Components/History";
-import SideBar from "./Components/SideBar";
+import SideBar from "./Components/layout/SideBar";
 
 function App() {
   return (
