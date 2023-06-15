@@ -1,4 +1,4 @@
-import AddExpense from "./Components/AddExpense";
+import AddExpense from "./Components/layout/AddExpense";
 import History from "./Components/History";
 import SideBar from "./Components/SideBar";
 

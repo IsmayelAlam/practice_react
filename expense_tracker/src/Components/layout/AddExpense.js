@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 import { nanoid } from "nanoid";
-import Input from "./Input";
+import Input from "../Input";
 
 const ADD_TITLE = "add_title";
 const ADD_AMOUNT = "add_amount";
@@ -34,6 +34,7 @@ export default function AddExpense() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(state);
+    event.target.reset();
   };
 
   const handleTitleChange = (event) =>
