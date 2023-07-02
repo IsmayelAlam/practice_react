@@ -2,14 +2,14 @@
 
 export default function MovieList() {
   return (
-    <div className="w-9/12 h-[calc(100%-4rem)] bg-slate-200 p-10 flex flex-wrap rounded-br-xl">
+    <div className="w-9/12 h-[calc(100%-4rem)] bg-slate-200 py-10 px-16 rounded-br-xl grid grid-cols-3 gap-5">
       <img
         src={movieData.Poster}
         alt={`${movieData.Poster} movie poster`}
-        className="w-[300px] h-[450px] rounded shadow mr-5 mb-5"
+        className="w-[300px] h-[450px] rounded shadow"
       />
 
-      <div className="flex flex-col gap-2 w-fit">
+      <div className="flex flex-col gap-2 w-fit justify-self-start -ml-12">
         <div className="flex items-end gap-3 justify-between">
           <h2
             className={`font-bold w-96 ${
@@ -35,13 +35,28 @@ export default function MovieList() {
         <p>Awards: {movieData.Awards}</p>
       </div>
 
-      <div className="bg-indigo-500 rounded shadow p-5 h-fit text-white mx-auto">
-        <p>IMDb Rating: {movieData.imdbRating}</p>
-        <p>IMDb votes: {movieData.imdbVotes}</p>
-        <p>Box Office: {movieData.BoxOffice}</p>
+      <div className="justify-self-end flex flex-col text-center justify-between">
+        <div className="bg-indigo-500 rounded shadow p-5 h-fit text-white">
+          <p>IMDb Rating: {movieData.imdbRating}</p>
+          <p>IMDb votes: {movieData.imdbVotes}</p>
+          <p>Box Office: {movieData.BoxOffice}</p>
+        </div>
+        <div className=" flex flex-col">
+          <button className=" bg-violet-500 text-white px-5 py-2 m-2 rounded-full shadow-md ">
+            + Add Bookmark
+          </button>
+          <a
+            className=" bg-violet-500 text-white px-5 py-2 m-2 rounded-full shadow-md "
+            href={`https://www.imdb.com/title/${movieData.imdbID}/videogallery/content_type-trailer/`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Watch trailer
+          </a>
+        </div>
       </div>
 
-      <div className="bg-indigo-400 rounded shadow p-5 text-ellipsis overflow-hidden w-full h-64">
+      <div className="bg-indigo-400 rounded shadow p-5 text-ellipsis overflow-hidden w-full h-64 col-span-3">
         <h3 className="font-bold text-white text-2xl">Plot</h3>
         <p className=" first-letter:text-2xl ">{movieData.Plot}</p>
       </div>
