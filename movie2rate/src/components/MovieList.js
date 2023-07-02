@@ -1,20 +1,32 @@
+// import { BsFillStarFill } from "react-icons/bs";
+
 export default function MovieList() {
   return (
     <div className="w-9/12 h-[calc(100%-4rem)] bg-slate-200 p-10 flex flex-wrap">
       <img
         src={movieData.Poster}
         alt={`${movieData.Poster} movie poster`}
-        className="w-[300px] h-fit rounded shadow mr-5"
+        className="w-[300px] h-[450px] rounded shadow mr-5 mb-5"
       />
 
-      <div className="flex flex-col gap-2">
-        <h2 className=" font-bold text-5xl">{movieData.Title}</h2>
-        <p>Year: {movieData.Year}</p>
+      <div className="flex flex-col gap-2 w-fit">
+        <div className="flex items-end gap-3 justify-between">
+          <h2
+            className={`font-bold w-96 ${
+              movieData.Title.length > 25 ? "truncate text-2xl" : "text-4xl"
+            }`}
+          >
+            {movieData.Title}
+          </h2>
+          <span>{movieData.Year}</span>
+        </div>
+
         <p>Rated: {movieData.Rated}</p>
         <p>Released on {movieData.Released}</p>
         <p>Total runtime {movieData.Runtime}</p>
         <p>{movieData.Genre}</p>
         <p>{movieData.Language}</p>
+
         <p>{movieData.Country}</p>
         <hr className="border-black" />
         <p>Director: {movieData.Director}</p>
@@ -23,21 +35,21 @@ export default function MovieList() {
         <p>Awards: {movieData.Awards}</p>
       </div>
 
-      <div>
+      <div className="bg-indigo-500 rounded shadow p-5 h-fit text-white mx-auto">
         <p>IMDb Rating: {movieData.imdbRating}</p>
         <p>IMDb votes: {movieData.imdbVotes}</p>
         <p>Box Office: {movieData.BoxOffice}</p>
       </div>
 
-      <div>
-        <h3 className="font-bold">Plot</h3>
-        <p>{movieData.Plot}</p>
+      <div className="bg-indigo-400 rounded shadow p-5 text-ellipsis overflow-hidden w-full h-64">
+        <h3 className="font-bold text-white text-2xl">Plot</h3>
+        <p className=" first-letter:text-2xl ">{movieData.Plot}</p>
       </div>
     </div>
   );
 }
 
-const movieData = {
+let movieData = {
   Title: "Iron Man",
   Year: "2008",
   Rated: "PG-13",
@@ -69,3 +81,39 @@ const movieData = {
   Website: "N/A",
   Response: "True",
 };
+
+// movieData = {
+//   Title:
+//     "Don't Be a Menace to South Central While Drinking your Juice in the Hood",
+//   Year: "1996",
+//   Rated: "R",
+//   Released: "12 Jan 1996",
+//   Runtime: "89 min",
+//   Genre: "Comedy, Crime",
+//   Director: "Paris Barclay",
+//   Writer: "Shawn Wayans, Marlon Wayans, Phil Beauman",
+//   Actors: "Shawn Wayans, Marlon Wayans, Keenen Ivory Wayans",
+//   Plot: '"Don\'t Be a Menace to South Central While Drinking your Juice in the Hood" is a parody of several U.S. films about being in the \'Hood\', for instance "Boyz n the Hood", "South Central", "Menace II Society", "Higher Learning" and "Juice". We follow Ashtray as he returns to the place he grew up in and meet his father and his basket-case friends. Crazy stuff happens. For example, Ashtray is older than his father and his best friend Loc Dog\'s grandmother is a trigger-happy old lady who blames her eccentric-looking kid for not being tough enough.',
+//   Language: "English, Spanish",
+//   Country: "United States",
+//   Awards: "1 nomination",
+//   Poster:
+//     "https://m.media-amazon.com/images/M/MV5BY2NmM2M2MWItNjdlMC00ZWI3LTkwODUtZDNkYWZjYjgzZjY3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+//   Ratings: [
+//     { Source: "Internet Movie Database", Value: "6.5/10" },
+//     { Source: "Rotten Tomatoes", Value: "32%" },
+//     { Source: "Metacritic", Value: "53/100" },
+//   ],
+//   Metascore: "53",
+//   imdbRating: "6.5",
+//   imdbVotes: "58,888",
+//   imdbID: "tt0116126",
+//   Type: "movie",
+//   DVD: "20 Sep 2005",
+//   BoxOffice: "$20,109,115",
+//   Production: "N/A",
+//   Website: "N/A",
+//   Response: "True",
+// };
+
+console.log(movieData.Title.length);

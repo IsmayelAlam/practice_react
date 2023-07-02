@@ -1,3 +1,5 @@
+import { BsBookmarks } from "react-icons/bs";
+
 const style = {
   header:
     "w-full bg-purple-500 h-16 col-span-2 flex items-center justify-between px-10 rounded-t-xl font-bold text-white",
@@ -21,7 +23,9 @@ export default function Header() {
         placeholder="Search you favorite movie here..."
         autoFocus
       />
-      <p>0 movie(s) found</p>
+      <div className=" cursor-pointer hover:bg-slate-300/20 p-2.5 rounded-full">
+        <BsBookmarks className=" w-7 h-7" />
+      </div>
     </header>
   );
 }
