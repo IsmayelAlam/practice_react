@@ -1,10 +1,10 @@
 export default function SearchResult() {
   return (
-    <div className="w-3/12 bg-slate-200 h-[calc(100%-4rem)] overflow-y-scroll rounded-bl-xl">
+    <div className="w-3/12 bg-slate-200 h-[calc(100%-4rem)] overflow-y-scroll rounded-bl-xl scrollbar">
       <ul className="px-10 pt-10">
         {initData.Search.map((movie) => (
           <li
-            className="flex gap-5 w-full h-28 mb-5 bg-indigo-400 overflow-hidden rounded-md shadow-md cursor-pointer"
+            className="flex gap-5 w-full h-28 mb-5 bg-indigo-400 overflow-hidden rounded-md shadow-md cursor-pointer "
             key={movie.imdbID}
           >
             <img src={movie.Poster} alt={`${movie.Poster} movie poster`} />

@@ -2,7 +2,7 @@
 
 export default function MovieList() {
   return (
-    <div className="w-9/12 h-[calc(100%-4rem)] bg-slate-200 p-10 flex flex-wrap">
+    <div className="w-9/12 h-[calc(100%-4rem)] bg-slate-200 p-10 flex flex-wrap rounded-br-xl">
       <img
         src={movieData.Poster}
         alt={`${movieData.Poster} movie poster`}
