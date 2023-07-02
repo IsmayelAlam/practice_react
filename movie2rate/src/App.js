@@ -7,7 +7,7 @@ function App() {
     <div className="bg-slate-500 w-screen h-screen flex flex-wrap px-20 py-10">
       <Header />
       <SearchResult />
-      {/* <MovieList /> */}
+      <MovieList />
     </div>
   );
 }
