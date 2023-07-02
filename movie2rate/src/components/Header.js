@@ -4,7 +4,7 @@ const style = {
   h1: "flex items-center bg-blue-700 shadow-md rounded-2xl px-5 py-1 text-xl",
   logo: "text-3xl text-red-400 rotate-12 italic bg-slate-100 h-10 w-10 text-center rounded-full mx-1",
   input:
-    "font-normal w-3/6 h-12 rounded-xl bg-purple-300 px-3 py-2 border-2 border-transparent focus:border-white outline-none shadow text-black",
+    "font-normal w-3/6 h-12 rounded-xl bg-purple-400 px-3 py-2 border-2 border-transparent focus:border-white outline-none shadow text-black placeholder:text-white",
 };
 
 export default function Header() {
@@ -18,7 +18,7 @@ export default function Header() {
       <input
         type="text"
         className={style.input}
-        placeholder="Search you favorite movie here"
+        placeholder="Search you favorite movie here..."
         autoFocus
       />
       <p>0 movie(s) found</p>
