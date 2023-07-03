@@ -1,108 +1,143 @@
-// import { BsFillStarFill } from "react-icons/bs";
+import useMovieFetch from "./useMovieFetch";
 
-export default function MovieList() {
+export default function MovieList({ movieId }) {
+  const [movieData, isLoading, isError] = useMovieFetch(movieId, "movieData");
+
+  console.log(movieData);
+
+  let content;
+
+  if (movieData.length === 0 && !isLoading && !isError) {
+    content = (
+      <div className="w-full font-bold m-5 text-2xl">
+        Search for your favorite movies...
+      </div>
+    );
+  } else if (isLoading) {
+    content = (
+      <div className="w-full h-fit p-5 font-bold text-white mb-5 bg-indigo-400 overflow-hidden rounded-md shadow-md cursor-pointer ">
+        Loading...
+      </div>
+    );
+  } else if (isError) {
+    console.log(isError);
+    content = (
+      <div className="w-full h-fit p-5 font-bold text-white mb-5 bg-red-400 overflow-hidden rounded-md shadow-md cursor-pointer ">
+        {isError.message}
+      </div>
+    );
+  } else {
+    content = (
+      <>
+        <img
+          src={movieData.Poster}
+          alt={`${movieData.Poster} movie poster`}
+          className="h-full rounded shadow"
+        />
+
+        <div className="flex flex-col justify-between">
+          <div className=" flex items-start flex-row justify-between mx-5 w-full">
+            <div className="flex flex-col gap-2 w-fit">
+              <div className="w-full">
+                <h2
+                  className={`font-bold w-96 inline-block ${
+                    movieData.Title.length > 25
+                      ? "truncate text-2xl"
+                      : "text-4xl"
+                  }`}
+                >
+                  {movieData.Title}
+                </h2>
+                <span className=" text-end">{movieData.Year}</span>
+              </div>
+
+              <p>Rated: {movieData.Rated}</p>
+              <p>Released on {movieData.Released}</p>
+              <p>Total runtime {movieData.Runtime}</p>
+              <p>{movieData.Genre}</p>
+              <p>{movieData.Language}</p>
+
+              <p>{movieData.Country}</p>
+              <hr className="border-black" />
+              <p>Director: {movieData.Director}</p>
+              <p>Writer: {movieData.Writer}</p>
+              <p>Actors: {movieData.Actors}</p>
+              <p>Awards: {movieData.Awards}</p>
+            </div>
+
+            <div className="flex flex-col text-center justify-between h-full">
+              <div className="bg-indigo-500 rounded shadow p-5 mb-5 h-fit text-white">
+                <p>IMDb Rating: {movieData.imdbRating}</p>
+                <p>IMDb votes: {movieData.imdbVotes}</p>
+                <p>Box Office: {movieData.BoxOffice}</p>
+              </div>
+
+              <div>
+                <button className="bg-violet-500 text-white py-3 font-bold rounded-full shadow-md block w-full mb-5">
+                  + Add Bookmark
+                </button>
+                <a
+                  className=" bg-violet-500 text-white py-3 font-bold rounded-full shadow-md block w-full"
+                  href={`https://www.imdb.com/title/${movieData.imdbID}/videogallery/content_type-trailer/`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Watch Trailer
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-indigo-400 rounded shadow p-5 mx-5 text-ellipsis overflow-hidden w-full max-h-72 overflow-y-scroll scrollbar">
+            <h3 className="font-bold text-2xl">Plot</h3>
+            <p className="first-letter:text-2xl first-letter:text-white first-letter:font-bold">
+              {movieData.Plot}
+            </p>
+          </div>
+        </div>
+      </>
+    );
+  }
+
   return (
     <div className="w-9/12 h-[calc(100%-4rem)] bg-slate-200 py-10 px-16 rounded-br-xl flex">
-      <img
-        src={movieData.Poster}
-        alt={`${movieData.Poster} movie poster`}
-        className="h-full rounded shadow"
-      />
-
-      <div className="flex flex-col justify-between">
-        <div className=" flex items-start flex-row justify-between mx-5 w-full">
-          <div className="flex flex-col gap-2 w-fit">
-            <div className="w-full">
-              <h2
-                className={`font-bold w-96 inline-block ${
-                  movieData.Title.length > 25 ? "truncate text-2xl" : "text-4xl"
-                }`}
-              >
-                {movieData.Title}
-              </h2>
-              <span className=" text-end">{movieData.Year}</span>
-            </div>
-
-            <p>Rated: {movieData.Rated}</p>
-            <p>Released on {movieData.Released}</p>
-            <p>Total runtime {movieData.Runtime}</p>
-            <p>{movieData.Genre}</p>
-            <p>{movieData.Language}</p>
-
-            <p>{movieData.Country}</p>
-            <hr className="border-black" />
-            <p>Director: {movieData.Director}</p>
-            <p>Writer: {movieData.Writer}</p>
-            <p>Actors: {movieData.Actors}</p>
-            <p>Awards: {movieData.Awards}</p>
-          </div>
-
-          <div className="flex flex-col text-center justify-between h-full">
-            <div className="bg-indigo-500 rounded shadow p-5 mb-5 h-fit text-white">
-              <p>IMDb Rating: {movieData.imdbRating}</p>
-              <p>IMDb votes: {movieData.imdbVotes}</p>
-              <p>Box Office: {movieData.BoxOffice}</p>
-            </div>
-
-            <div>
-              <button className="bg-violet-500 text-white py-3 font-bold rounded-full shadow-md block w-full mb-5">
-                + Add Bookmark
-              </button>
-              <a
-                className=" bg-violet-500 text-white py-3 font-bold rounded-full shadow-md block w-full"
-                href={`https://www.imdb.com/title/${movieData.imdbID}/videogallery/content_type-trailer/`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Watch Trailer
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-indigo-400 rounded shadow p-5 mx-5 text-ellipsis overflow-hidden w-full max-h-96">
-          <h3 className="font-bold text-2xl">Plot</h3>
-          <p className="first-letter:text-2xl first-letter:text-white first-letter:font-bold">
-            {movieData.Plot}
-          </p>
-        </div>
-      </div>
+      {content}
     </div>
   );
 }
 
-let movieData = {
-  Title: "Iron Man",
-  Year: "2008",
-  Rated: "PG-13",
-  Released: "02 May 2008",
-  Runtime: "126 min",
-  Genre: "Action, Adventure, Sci-Fi",
-  Director: "Jon Favreau",
-  Writer: "Mark Fergus, Hawk Ostby, Art Marcum",
-  Actors: "Robert Downey Jr., Gwyneth Paltrow, Terrence Howard",
-  Plot: "Tony Stark. Genius, billionaire, playboy, philanthropist. Son of legendary inventor and weapons contractor Howard Stark. When Tony Stark is assigned to give a weapons presentation to an Iraqi unit led by Lt. Col. James Rhodes, he's given a ride on enemy lines. That ride ends badly when Stark's Humvee that he's riding in is attacked by enemy combatants. He survives - barely - with a chest full of shrapnel and a car battery attached to his heart. In order to survive he comes up with a way to miniaturize the battery and figures out that the battery can power something else. Thus Iron Man is born. He uses the primitive device to escape from the cave in Iraq. Once back home, he then begins work on perfecting the Iron Man suit. But the man who was put in charge of Stark Industries has plans of his own to take over Tony's technology for other matters.",
-  Language: "English, Persian, Urdu, Arabic, Kurdish, Hindi, Hungarian",
-  Country: "United States, Canada",
-  Awards: "Nominated for 2 Oscars. 22 wins & 73 nominations total",
-  Poster:
-    "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg",
-  Ratings: [
-    { Source: "Internet Movie Database", Value: "7.9/10" },
-    { Source: "Rotten Tomatoes", Value: "94%" },
-    { Source: "Metacritic", Value: "79/100" },
-  ],
-  Metascore: "79",
-  imdbRating: "7.9",
-  imdbVotes: "1,082,676",
-  imdbID: "tt0371746",
-  Type: "movie",
-  DVD: "30 Sep 2008",
-  BoxOffice: "$319,034,126",
-  Production: "N/A",
-  Website: "N/A",
-  Response: "True",
-};
+// let movieData = {
+//   Title: "Iron Man",
+//   Year: "2008",
+//   Rated: "PG-13",
+//   Released: "02 May 2008",
+//   Runtime: "126 min",
+//   Genre: "Action, Adventure, Sci-Fi",
+//   Director: "Jon Favreau",
+//   Writer: "Mark Fergus, Hawk Ostby, Art Marcum",
+//   Actors: "Robert Downey Jr., Gwyneth Paltrow, Terrence Howard",
+//   Plot: "Tony Stark. Genius, billionaire, playboy, philanthropist. Son of legendary inventor and weapons contractor Howard Stark. When Tony Stark is assigned to give a weapons presentation to an Iraqi unit led by Lt. Col. James Rhodes, he's given a ride on enemy lines. That ride ends badly when Stark's Humvee that he's riding in is attacked by enemy combatants. He survives - barely - with a chest full of shrapnel and a car battery attached to his heart. In order to survive he comes up with a way to miniaturize the battery and figures out that the battery can power something else. Thus Iron Man is born. He uses the primitive device to escape from the cave in Iraq. Once back home, he then begins work on perfecting the Iron Man suit. But the man who was put in charge of Stark Industries has plans of his own to take over Tony's technology for other matters.",
+//   Language: "English, Persian, Urdu, Arabic, Kurdish, Hindi, Hungarian",
+//   Country: "United States, Canada",
+//   Awards: "Nominated for 2 Oscars. 22 wins & 73 nominations total",
+//   Poster:
+//     "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg",
+//   Ratings: [
+//     { Source: "Internet Movie Database", Value: "7.9/10" },
+//     { Source: "Rotten Tomatoes", Value: "94%" },
+//     { Source: "Metacritic", Value: "79/100" },
+//   ],
+//   Metascore: "79",
+//   imdbRating: "7.9",
+//   imdbVotes: "1,082,676",
+//   imdbID: "tt0371746",
+//   Type: "movie",
+//   DVD: "30 Sep 2008",
+//   BoxOffice: "$319,034,126",
+//   Production: "N/A",
+//   Website: "N/A",
+//   Response: "True",
+// };
 
 // movieData = {
 //   Title:

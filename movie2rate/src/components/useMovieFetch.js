@@ -1,18 +1,22 @@
 import { useEffect, useState } from "react";
 
-export default function useMovieFetch(query) {
-  const [searchMovies, setSearchMovies] = useState([]);
+export default function useMovieFetch(data, type) {
+  const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setError] = useState();
 
+  let url = `https://www.omdbapi.com/?apikey=1c9a40f0&s=${data}`;
+
+  if (type === "movieData") {
+    url = `https://www.omdbapi.com/?apikey=1c9a40f0&i=${data}&plot=full`;
+  }
+
   useEffect(() => {
-    if (query < 3) return;
+    if (data < 3) return;
     setIsLoading(true);
     const fetchMovie = async function () {
       try {
-        const res = await fetch(
-          `https://www.omdbapi.com/?s=${query}&apikey=1c9a40f0`
-        );
+        const res = await fetch(url);
 
         if (!res.ok)
           throw new Error(
@@ -20,7 +24,9 @@ export default function useMovieFetch(query) {
           );
 
         const data = await res.json();
-        if (res.ok) setSearchMovies(data.Search);
+        console.log(data);
+
+        if (res.ok) setMovies(data);
       } catch (error) {
         setError(error);
       } finally {
@@ -29,7 +35,7 @@ export default function useMovieFetch(query) {
     };
 
     fetchMovie();
-  }, [query]);
+  }, [data, url]);
 
-  return [searchMovies, isLoading, isError];
+  return [movies, isLoading, isError];
 }

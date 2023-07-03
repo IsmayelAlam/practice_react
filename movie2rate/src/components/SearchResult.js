@@ -19,13 +19,17 @@ export default function SearchResult({ query, handleMovieId }) {
       </li>
     );
   } else {
-    content = searchMovies?.map((movie) => (
+    content = searchMovies?.Search?.map((movie) => (
       <li
         className="flex gap-5 w-full h-28 mb-5 bg-indigo-400 overflow-hidden rounded-md shadow-md cursor-pointer "
         key={movie.imdbID}
         onClick={handleMovieId.bind(null, movie.imdbID)}
       >
-        <img src={movie.Poster} alt={`${movie.Poster} movie poster`} />
+        <img
+          src={movie.Poster}
+          alt={`${movie.Poster} movie poster`}
+          className="w-20"
+        />
         <div className="flex flex-col justify-center">
           <h3 className="font-semibold text-2xl text-white">{movie.Title}</h3>
           <p>{movie.Year}</p>
