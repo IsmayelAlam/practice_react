@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export default function SearchResult({ query }) {
   const [searchMovies, setSearchMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setError] = useState({});
+  const [isError, setError] = useState();
 
   useEffect(() => {
     if (query < 3) return;
@@ -11,15 +11,18 @@ export default function SearchResult({ query }) {
     const fetchMovie = async function () {
       try {
         const res = await fetch(
-          `https://www.omdbapi.com/?s=${query}&apikey=1c9a40f0`
+          `https://www.omdbapi.com/?s=${query}&apikey=1c9a40f`
         );
-        console.log(res);
-        if (!res.ok) throw new Error();
+
+        if (!res.ok)
+          throw new Error(
+            "Wrong keyword, please check your internet connection and try again"
+          );
 
         const data = await res.json();
         if (res.ok) setSearchMovies(data.Search);
       } catch (error) {
-        console.log(error);
+        setError(error);
       } finally {
         setIsLoading(false);
       }
@@ -34,6 +37,13 @@ export default function SearchResult({ query }) {
     content = (
       <li className="w-full h-fit p-5 font-bold text-white mb-5 bg-indigo-400 overflow-hidden rounded-md shadow-md cursor-pointer ">
         Loading...
+      </li>
+    );
+  } else if (isError) {
+    console.log(isError);
+    content = (
+      <li className="w-full h-fit p-5 font-bold text-white mb-5 bg-red-400 overflow-hidden rounded-md shadow-md cursor-pointer ">
+        {isError.message}
       </li>
     );
   } else {
