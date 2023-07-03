@@ -1,6 +1,6 @@
 import useMovieFetch from "./useMovieFetch";
 
-export default function SearchResult({ query }) {
+export default function SearchResult({ query, handleMovieId }) {
   const [searchMovies, isLoading, isError] = useMovieFetch(query);
 
   let content;
@@ -23,6 +23,7 @@ export default function SearchResult({ query }) {
       <li
         className="flex gap-5 w-full h-28 mb-5 bg-indigo-400 overflow-hidden rounded-md shadow-md cursor-pointer "
         key={movie.imdbID}
+        onClick={handleMovieId.bind(null, movie.imdbID)}
       >
         <img src={movie.Poster} alt={`${movie.Poster} movie poster`} />
         <div className="flex flex-col justify-center">

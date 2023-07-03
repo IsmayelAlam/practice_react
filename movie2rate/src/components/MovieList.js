@@ -2,65 +2,70 @@
 
 export default function MovieList() {
   return (
-    <div className="w-9/12 h-[calc(100%-4rem)] bg-slate-200 py-10 px-16 rounded-br-xl grid grid-cols-3 gap-5">
+    <div className="w-9/12 h-[calc(100%-4rem)] bg-slate-200 py-10 px-16 rounded-br-xl flex">
       <img
         src={movieData.Poster}
         alt={`${movieData.Poster} movie poster`}
-        className="w-[300px] h-[450px] rounded shadow"
+        className="h-full rounded shadow"
       />
-      {/* -ml-12 */}
-      <div className="flex flex-col gap-2 w-fit justify-self-start ">
-        <div className="flex items-end gap-3 justify-between">
-          <h2
-            className={`font-bold w-96 ${
-              movieData.Title.length > 25 ? "truncate text-2xl" : "text-4xl"
-            }`}
-          >
-            {movieData.Title}
-          </h2>
-          <span>{movieData.Year}</span>
+
+      <div className="flex flex-col justify-between">
+        <div className=" flex items-start flex-row justify-between mx-5 w-full">
+          <div className="flex flex-col gap-2 w-fit">
+            <div className="w-full">
+              <h2
+                className={`font-bold w-96 inline-block ${
+                  movieData.Title.length > 25 ? "truncate text-2xl" : "text-4xl"
+                }`}
+              >
+                {movieData.Title}
+              </h2>
+              <span className=" text-end">{movieData.Year}</span>
+            </div>
+
+            <p>Rated: {movieData.Rated}</p>
+            <p>Released on {movieData.Released}</p>
+            <p>Total runtime {movieData.Runtime}</p>
+            <p>{movieData.Genre}</p>
+            <p>{movieData.Language}</p>
+
+            <p>{movieData.Country}</p>
+            <hr className="border-black" />
+            <p>Director: {movieData.Director}</p>
+            <p>Writer: {movieData.Writer}</p>
+            <p>Actors: {movieData.Actors}</p>
+            <p>Awards: {movieData.Awards}</p>
+          </div>
+
+          <div className="flex flex-col text-center justify-between h-full">
+            <div className="bg-indigo-500 rounded shadow p-5 mb-5 h-fit text-white">
+              <p>IMDb Rating: {movieData.imdbRating}</p>
+              <p>IMDb votes: {movieData.imdbVotes}</p>
+              <p>Box Office: {movieData.BoxOffice}</p>
+            </div>
+
+            <div>
+              <button className="bg-violet-500 text-white py-3 font-bold rounded-full shadow-md block w-full mb-5">
+                + Add Bookmark
+              </button>
+              <a
+                className=" bg-violet-500 text-white py-3 font-bold rounded-full shadow-md block w-full"
+                href={`https://www.imdb.com/title/${movieData.imdbID}/videogallery/content_type-trailer/`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Watch Trailer
+              </a>
+            </div>
+          </div>
         </div>
 
-        <p>Rated: {movieData.Rated}</p>
-        <p>Released on {movieData.Released}</p>
-        <p>Total runtime {movieData.Runtime}</p>
-        <p>{movieData.Genre}</p>
-        <p>{movieData.Language}</p>
-
-        <p>{movieData.Country}</p>
-        <hr className="border-black" />
-        <p>Director: {movieData.Director}</p>
-        <p>Writer: {movieData.Writer}</p>
-        <p>Actors: {movieData.Actors}</p>
-        <p>Awards: {movieData.Awards}</p>
-      </div>
-
-      <div className="justify-self-end flex flex-col text-center justify-between">
-        <div className="bg-indigo-500 rounded shadow p-5 h-fit text-white">
-          <p>IMDb Rating: {movieData.imdbRating}</p>
-          <p>IMDb votes: {movieData.imdbVotes}</p>
-          <p>Box Office: {movieData.BoxOffice}</p>
+        <div className="bg-indigo-400 rounded shadow p-5 mx-5 text-ellipsis overflow-hidden w-full max-h-96">
+          <h3 className="font-bold text-2xl">Plot</h3>
+          <p className="first-letter:text-2xl first-letter:text-white first-letter:font-bold">
+            {movieData.Plot}
+          </p>
         </div>
-        <div className=" flex flex-col gap-4">
-          <button className=" bg-violet-500 text-white py-3 font-bold rounded-full shadow-md ">
-            + Add Bookmark
-          </button>
-          <a
-            className=" bg-violet-500 text-white py-3 font-bold rounded-full shadow-md "
-            href={`https://www.imdb.com/title/${movieData.imdbID}/videogallery/content_type-trailer/`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Watch Trailer
-          </a>
-        </div>
-      </div>
-
-      <div className="bg-indigo-400 rounded shadow p-5 text-ellipsis overflow-hidden w-full h-64 col-span-3">
-        <h3 className="font-bold text-2xl">Plot</h3>
-        <p className=" first-letter:text-2xl first-letter:text-white first-letter:font-bold">
-          {movieData.Plot}
-        </p>
       </div>
     </div>
   );
@@ -128,6 +133,39 @@ let movieData = {
 //   Type: "movie",
 //   DVD: "20 Sep 2005",
 //   BoxOffice: "$20,109,115",
+//   Production: "N/A",
+//   Website: "N/A",
+//   Response: "True",
+// };
+
+// movieData = {
+//   Title: "The Lion King",
+//   Year: "1994",
+//   Rated: "G",
+//   Released: "24 Jun 1994",
+//   Runtime: "88 min",
+//   Genre: "Animation, Adventure, Drama",
+//   Director: "Roger Allers, Rob Minkoff",
+//   Writer: "Irene Mecchi, Jonathan Roberts, Linda Woolverton",
+//   Actors: "Matthew Broderick, Jeremy Irons, James Earl Jones",
+//   Plot: "A young lion prince is cast out of his pride by his cruel uncle, who claims he killed his father. While the uncle rules with an iron paw, the prince grows up beyond the Savannah, living by a philosophy: No worries for the rest of your days. But when his past comes to haunt him, the young prince must decide his fate: Will he remain an outcast or face his demons and become what he needs to be?",
+//   Language: "English, Swahili, Xhosa, Zulu",
+//   Country: "United States",
+//   Awards: "Won 2 Oscars. 43 wins & 35 nominations total",
+//   Poster:
+//     "https://m.media-amazon.com/images/M/MV5BYTYxNGMyZTYtMjE3MS00MzNjLWFjNmYtMDk3N2FmM2JiM2M1XkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_SX300.jpg",
+//   Ratings: [
+//     { Source: "Internet Movie Database", Value: "8.5/10" },
+//     { Source: "Rotten Tomatoes", Value: "93%" },
+//     { Source: "Metacritic", Value: "88/100" },
+//   ],
+//   Metascore: "88",
+//   imdbRating: "8.5",
+//   imdbVotes: "1,089,792",
+//   imdbID: "tt0110357",
+//   Type: "movie",
+//   DVD: "04 Oct 2011",
+//   BoxOffice: "$422,783,777",
 //   Production: "N/A",
 //   Website: "N/A",
 //   Response: "True",
