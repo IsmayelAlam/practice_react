@@ -8,8 +8,8 @@ export default function MovieList() {
         alt={`${movieData.Poster} movie poster`}
         className="w-[300px] h-[450px] rounded shadow"
       />
-
-      <div className="flex flex-col gap-2 w-fit justify-self-start -ml-12">
+      {/* -ml-12 */}
+      <div className="flex flex-col gap-2 w-fit justify-self-start ">
         <div className="flex items-end gap-3 justify-between">
           <h2
             className={`font-bold w-96 ${
@@ -41,24 +41,26 @@ export default function MovieList() {
           <p>IMDb votes: {movieData.imdbVotes}</p>
           <p>Box Office: {movieData.BoxOffice}</p>
         </div>
-        <div className=" flex flex-col">
-          <button className=" bg-violet-500 text-white px-5 py-2 m-2 rounded-full shadow-md ">
+        <div className=" flex flex-col gap-4">
+          <button className=" bg-violet-500 text-white py-3 font-bold rounded-full shadow-md ">
             + Add Bookmark
           </button>
           <a
-            className=" bg-violet-500 text-white px-5 py-2 m-2 rounded-full shadow-md "
+            className=" bg-violet-500 text-white py-3 font-bold rounded-full shadow-md "
             href={`https://www.imdb.com/title/${movieData.imdbID}/videogallery/content_type-trailer/`}
             target="_blank"
             rel="noreferrer"
           >
-            Watch trailer
+            Watch Trailer
           </a>
         </div>
       </div>
 
       <div className="bg-indigo-400 rounded shadow p-5 text-ellipsis overflow-hidden w-full h-64 col-span-3">
-        <h3 className="font-bold text-white text-2xl">Plot</h3>
-        <p className=" first-letter:text-2xl ">{movieData.Plot}</p>
+        <h3 className="font-bold text-2xl">Plot</h3>
+        <p className=" first-letter:text-2xl first-letter:text-white first-letter:font-bold">
+          {movieData.Plot}
+        </p>
       </div>
     </div>
   );
@@ -131,4 +133,4 @@ let movieData = {
 //   Response: "True",
 // };
 
-console.log(movieData.Title.length);
+// console.log(movieData.Title.length);
