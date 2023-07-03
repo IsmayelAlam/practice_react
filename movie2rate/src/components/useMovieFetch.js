@@ -12,22 +12,24 @@ export default function useMovieFetch(data, type) {
   }
 
   useEffect(() => {
-    if (data < 3) return;
-    setIsLoading(true);
+    if (data <= 3) return;
     const fetchMovie = async function () {
       try {
+        setIsLoading(true);
+
         const res = await fetch(url);
 
-        if (!res.ok)
+        if (!res.ok) {
           throw new Error(
-            "Wrong keyword, please check your internet connection and try again"
+            "Please check your internet connection and try again"
           );
+        }
 
         const data = await res.json();
-        console.log(data);
 
         if (res.ok) setMovies(data);
       } catch (error) {
+        console.log(error);
         setError(error);
       } finally {
         setIsLoading(false);

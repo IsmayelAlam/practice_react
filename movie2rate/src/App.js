@@ -20,5 +20,3 @@ function App() {
 }
 
 export default App;
-
-// api:1c9a40f0

@@ -7,6 +7,7 @@ const style = {
   logo: "text-4xl text-red-400 rotate-12 italic h-10 w-10 text-center rounded-full -mx-4 shadow",
   input:
     "font-normal w-3/6 h-12 rounded-xl bg-purple-400 px-3 py-2 border-2 border-transparent focus:border-white outline-none shadow text-black placeholder:text-white",
+  icon: "cursor-pointer hover:bg-slate-300/20 p-2.5 rounded-full",
 };
 
 export default function Header({ handelChange, query }) {
@@ -25,7 +26,7 @@ export default function Header({ handelChange, query }) {
         value={query}
         onChange={handelChange}
       />
-      <div className=" cursor-pointer hover:bg-slate-300/20 p-2.5 rounded-full">
+      <div className={style.icon}>
         <BsBookmarks className=" w-7 h-7" />
       </div>
     </header>

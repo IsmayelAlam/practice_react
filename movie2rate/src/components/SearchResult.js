@@ -1,27 +1,32 @@
 import useMovieFetch from "./useMovieFetch";
 
+const style = {
+  mainDiv:
+    "w-3/12 bg-slate-200 h-[calc(100%-4rem)] overflow-y-scroll rounded-bl-xl scrollbar",
+  listUtils:
+    "w-full h-fit p-5 font-bold text-white mb-5 overflow-hidden rounded-md shadow-md cursor-pointer",
+  mainList:
+    "flex gap-5 w-full h-28 mb-5 bg-indigo-400 overflow-hidden rounded-md shadow-md cursor-pointer ",
+  title: "font-semibold text-2xl text-white",
+};
+
 export default function SearchResult({ query, handleMovieId }) {
-  const [searchMovies, isLoading, isError] = useMovieFetch(query);
+  const [search, isLoading, isError] = useMovieFetch(query);
 
   let content;
 
   if (isLoading) {
     content = (
-      <li className="w-full h-fit p-5 font-bold text-white mb-5 bg-indigo-400 overflow-hidden rounded-md shadow-md cursor-pointer ">
-        Loading...
-      </li>
+      <li className={style.listUtils + " bg-indigo-400"}>Loading...</li>
     );
   } else if (isError) {
-    console.log(isError);
     content = (
-      <li className="w-full h-fit p-5 font-bold text-white mb-5 bg-red-400 overflow-hidden rounded-md shadow-md cursor-pointer ">
-        {isError.message}
-      </li>
+      <li className={style.listUtils + " bg-red-400"}>{isError.message}</li>
     );
   } else {
-    content = searchMovies?.Search?.map((movie) => (
+    content = search?.Search?.map((movie) => (
       <li
-        className="flex gap-5 w-full h-28 mb-5 bg-indigo-400 overflow-hidden rounded-md shadow-md cursor-pointer "
+        className={style.mainList}
         key={movie.imdbID}
         onClick={handleMovieId.bind(null, movie.imdbID)}
       >
@@ -31,7 +36,7 @@ export default function SearchResult({ query, handleMovieId }) {
           className="w-20"
         />
         <div className="flex flex-col justify-center">
-          <h3 className="font-semibold text-2xl text-white">{movie.Title}</h3>
+          <h3 className={style.title}>{movie.Title}</h3>
           <p>{movie.Year}</p>
         </div>
       </li>
@@ -39,7 +44,7 @@ export default function SearchResult({ query, handleMovieId }) {
   }
 
   return (
-    <div className="w-3/12 bg-slate-200 h-[calc(100%-4rem)] overflow-y-scroll rounded-bl-xl scrollbar">
+    <div className={style.mainDiv}>
       <ul className="px-10 pt-10">{content}</ul>
     </div>
   );
