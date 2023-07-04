@@ -12,7 +12,7 @@ const style = {
   plot: "bg-indigo-400 rounded shadow p-5 mx-5 text-ellipsis overflow-hidden w-full max-h-64 overflow-y-scroll scrollbar",
 };
 
-export default function MovieList({ movieId }) {
+export default function MovieShow({ movieId }) {
   const [movieData, isLoading, isError] = useMovieFetch(movieId, "movieData");
 
   useEffect(() => {
@@ -53,9 +53,7 @@ export default function MovieList({ movieId }) {
               <div className="w-full">
                 <h2
                   className={`font-bold w-96 inline-block ${
-                    movieData.Title.length > 25
-                      ? "truncate text-2xl"
-                      : "text-4xl"
+                    movieData.Title.length > 25 ? "text-2xl" : "text-4xl"
                   }`}
                 >
                   {movieData.Title}

@@ -1,3 +1,4 @@
+import MovieList from "./MovieList";
 import useMovieFetch from "./useMovieFetch";
 
 const style = {
@@ -25,21 +26,10 @@ export default function SearchResult({ query, handleMovieId }) {
     );
   } else {
     content = search?.Search?.map((movie) => (
-      <li
-        className={style.mainList}
-        key={movie.imdbID}
+      <MovieList
+        movie={movie}
         onClick={handleMovieId.bind(null, movie.imdbID)}
-      >
-        <img
-          src={movie.Poster}
-          alt={`${movie.Poster} movie poster`}
-          className="w-20"
-        />
-        <div className="flex flex-col justify-center">
-          <h3 className={style.title}>{movie.Title}</h3>
-          <p>{movie.Year}</p>
-        </div>
-      </li>
+      />
     ));
   }
 
