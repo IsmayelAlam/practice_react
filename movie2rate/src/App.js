@@ -11,8 +11,12 @@ function App() {
   const handleMovieId = (id) => setMovieId(id);
 
   return (
-    <div className="bg-slate-500 w-screen h-screen flex flex-wrap px-20 py-10">
-      <Header handelChange={handelChange} query={query} />
+    <div className="bg-slate-500 w-screen h-screen flex flex-wrap px-20 py-10 overflow-hidden">
+      <Header
+        handelChange={handelChange}
+        query={query}
+        handleMovieId={handleMovieId}
+      />
       <SearchResult query={query} handleMovieId={handleMovieId} />
       <MovieShow movieId={movieId} />
     </div>

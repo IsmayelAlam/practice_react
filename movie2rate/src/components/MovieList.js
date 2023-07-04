@@ -4,14 +4,13 @@ const style = {
   listUtils:
     "w-full h-fit p-5 font-bold text-white mb-5 overflow-hidden rounded-md shadow-md cursor-pointer",
   mainList:
-    "flex gap-5 w-full h-28 mb-5 bg-indigo-400 overflow-hidden rounded-md shadow-md cursor-pointer ",
+    "flex gap-5 w-full h-28 mb-5 bg-indigo-300 overflow-hidden rounded-md shadow-md cursor-pointer last:mb-0",
   title: "font-semibold text-white w-60",
 };
 
 export default function MovieList({ movie, ...rest }) {
-  console.log(movie.Title.length);
   return (
-    <li className={style.mainList} key={movie.imdbID} {...rest}>
+    <li className={style.mainList} {...rest}>
       <img
         src={movie.Poster}
         alt={`${movie.Poster} movie poster`}

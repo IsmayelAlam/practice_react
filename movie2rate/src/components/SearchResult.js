@@ -29,6 +29,7 @@ export default function SearchResult({ query, handleMovieId }) {
       <MovieList
         movie={movie}
         onClick={handleMovieId.bind(null, movie.imdbID)}
+        key={movie.imdbID}
       />
     ));
   }
