@@ -12,12 +12,14 @@ export default function useMovieFetch(data, type) {
   }
 
   useEffect(() => {
+    const controller = new AbortController();
+
     if (data <= 3) return;
     const fetchMovie = async function () {
       try {
         setIsLoading(true);
 
-        const res = await fetch(url);
+        const res = await fetch(url, { signal: controller.signal });
 
         if (!res.ok) {
           throw new Error(
@@ -29,14 +31,17 @@ export default function useMovieFetch(data, type) {
 
         if (res.ok) setMovies(data);
       } catch (error) {
-        console.log(error);
-        setError(error);
+        if (error.name !== "AbortError") setError(error);
       } finally {
         setIsLoading(false);
       }
     };
 
     fetchMovie();
+
+    return function () {
+      controller.abort();
+    };
   }, [data, url]);
 
   return [movies, isLoading, isError];

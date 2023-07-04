@@ -19,7 +19,6 @@ export default function MovieShow({ movieId }) {
     document.title = movieData.Title
       ? `${movieData.Title} | movie2watch`
       : "movie2watch";
-    console.log(movieData);
   }, [movieData]);
 
   let content;
