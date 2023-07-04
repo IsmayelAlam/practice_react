@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import useMovieFetch from "./useMovieFetch";
 
 const style = {
@@ -8,11 +9,18 @@ const style = {
     "w-full h-fit p-5 font-bold text-white mb-5 overflow-hidden rounded-md shadow-md cursor-pointer",
   button:
     "bg-violet-500 text-white py-3 font-bold rounded-full shadow-md block w-full mt-5 text-center",
-  plot: "bg-indigo-400 rounded shadow p-5 mx-5 text-ellipsis overflow-hidden w-full max-h-72 overflow-y-scroll scrollbar",
+  plot: "bg-indigo-400 rounded shadow p-5 mx-5 text-ellipsis overflow-hidden w-full max-h-64 overflow-y-scroll scrollbar",
 };
 
 export default function MovieList({ movieId }) {
   const [movieData, isLoading, isError] = useMovieFetch(movieId, "movieData");
+
+  useEffect(() => {
+    document.title = movieData.Title
+      ? `${movieData.Title} | movie2watch`
+      : "movie2watch";
+    console.log(movieData);
+  }, [movieData]);
 
   let content;
 
@@ -27,7 +35,6 @@ export default function MovieList({ movieId }) {
       <div className={style.listUtils + " bg-indigo-400"}>Loading...</div>
     );
   } else if (isError) {
-    console.log(isError);
     content = (
       <div className={style.listUtils + " bg-red-400"}>{isError.message}</div>
     );
@@ -37,7 +44,7 @@ export default function MovieList({ movieId }) {
         <img
           src={movieData.Poster}
           alt={`${movieData.Poster} movie poster`}
-          className="h-full rounded shadow"
+          className="h-full w-[475px] rounded shadow"
         />
 
         <div className={style.flex}>
@@ -59,8 +66,9 @@ export default function MovieList({ movieId }) {
               <p>Rated: {movieData.Rated}</p>
               <p>Released on {movieData.Released}</p>
               <p>Total runtime {movieData.Runtime}</p>
-              <p>{movieData.Genre}</p>
-              <p>{movieData.Language}</p>
+              <p>Type: {movieData.Type}</p>
+              <p>Genre: {movieData.Genre}</p>
+              <p>Language: {movieData.Language}</p>
 
               <p>{movieData.Country}</p>
               <hr className="border-black" />
