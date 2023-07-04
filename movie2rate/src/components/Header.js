@@ -10,25 +10,28 @@ const style = {
   input:
     "font-normal w-3/6 h-12 rounded-xl bg-purple-400 px-3 py-2 border-2 border-transparent focus:border-white outline-none shadow text-black placeholder:text-white",
   icon: "cursor-pointer hover:bg-slate-300/20 p-2.5 rounded-full relative",
+  bookmark: "absolute h-[50rem] top-0 -right-10",
+  list: "p-5 w-96 bg-slate-300 h-[40rem] mt-20 overflow-y-scroll scrollbar rounded-l-md shadow",
 };
 
 export default function Header({ handelChange, query, handleMovieId }) {
   const [showBookmark, setShowBookmark] = useState(false);
-  console.log(showBookmark);
+
+  const handelClick = () => {};
 
   const bookmark = (
-    <div className="absolute h-[50rem] top-0 -right-10 transition-all">
-      <div className="">
-        <ul className="p-5 w-96 bg-slate-300 h-[40rem] mt-20 overflow-y-scroll scrollbar rounded-l-md shadow">
-          {movies.map((movie) => (
-            <MovieList
-              movie={movie}
-              key={movie.imdbID}
-              onClick={handleMovieId.bind(null, movie.imdbID)}
-            />
-          ))}
-        </ul>
-      </div>
+    <div className={style.bookmark}>
+      <ul className={style.list}>
+        {movies.map((movie) => (
+          <MovieList
+            movie={movie}
+            key={movie.imdbID}
+            bookmark
+            onMouseDown={handleMovieId.bind(null, movie.imdbID)}
+            onClick={handelClick}
+          />
+        ))}
+      </ul>
     </div>
   );
 

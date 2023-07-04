@@ -12,7 +12,7 @@ const style = {
   plot: "bg-indigo-400 rounded shadow p-5 mx-5 text-ellipsis overflow-hidden w-full max-h-64 overflow-y-scroll scrollbar",
 };
 
-export default function MovieShow({ movieId }) {
+export default function MovieShow({ movieId, bookmark }) {
   const [movieData, isLoading, isError] = useMovieFetch(movieId, "movieData");
 
   useEffect(() => {
@@ -83,7 +83,12 @@ export default function MovieShow({ movieId }) {
               </div>
 
               <div>
-                <button className={style.button}>+ Add Bookmark</button>
+                <button
+                  className={style.button}
+                  onClick={bookmark.bind(null, movieData)}
+                >
+                  + Add Bookmark
+                </button>
                 <a
                   className={style.button}
                   href={`https://www.imdb.com/title/${movieData.imdbID}/videogallery/content_type-trailer/`}

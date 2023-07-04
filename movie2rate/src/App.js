@@ -9,6 +9,7 @@ function App() {
 
   const handelChange = (e) => setQuery(e.target.value);
   const handleMovieId = (id) => setMovieId(id);
+  const handleBookmark = (movie) => console.log(movie.Title);
 
   return (
     <div className="bg-slate-500 w-screen h-screen flex flex-wrap px-20 py-10 overflow-hidden">
@@ -18,7 +19,7 @@ function App() {
         handleMovieId={handleMovieId}
       />
       <SearchResult query={query} handleMovieId={handleMovieId} />
-      <MovieShow movieId={movieId} />
+      <MovieShow movieId={movieId} bookmark={handleBookmark} />
     </div>
   );
 }
