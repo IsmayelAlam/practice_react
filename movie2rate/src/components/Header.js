@@ -19,6 +19,7 @@ export default function Header({
   query,
   handleMovieId,
   bookmarkMovie,
+  handleDeleteBookmark,
 }) {
   const [showBookmark, setShowBookmark] = useState(false);
 
@@ -31,6 +32,7 @@ export default function Header({
             key={movie.imdbID}
             bookmark
             onMouseDown={handleMovieId.bind(null, movie.imdbID)}
+            handleDeleteBookmark={handleDeleteBookmark}
           />
         ))}
       </ul>

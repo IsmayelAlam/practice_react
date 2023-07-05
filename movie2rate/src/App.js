@@ -28,7 +28,10 @@ function App() {
     setBookmark([movieBookmark, ...bookmark]);
   };
 
-  const handleDeleteBookmark = (id) => {};
+  const handleDeleteBookmark = (id) => {
+    const removed = bookmark.filter((movie) => movie.imdbID !== id);
+    setBookmark(removed);
+  };
 
   // useEffect(() => {
   //   localStorage.setItem("bookmark", bookmark);

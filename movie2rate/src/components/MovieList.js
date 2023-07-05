@@ -5,7 +5,13 @@ const style = {
   title: "font-semibold text-white w-60",
 };
 
-export default function MovieList({ movie, bookmark, ...rest }) {
+export default function MovieList({
+  movie,
+  bookmark,
+  handleDeleteBookmark,
+  ...rest
+}) {
+  const handlClick = () => handleDeleteBookmark(movie.imdbID);
   return (
     <li className={style.list} {...rest}>
       <img
@@ -25,7 +31,10 @@ export default function MovieList({ movie, bookmark, ...rest }) {
         <p>{movie.Year}</p>
       </div>
       {bookmark && (
-        <button className="absolute top-2 right-2 text-black">
+        <button
+          className="absolute top-2 right-2 text-black"
+          onClick={handlClick}
+        >
           <AiOutlineCloseCircle className="h-6 w-6" />
         </button>
       )}
