@@ -8,7 +8,7 @@ const style = {
   listUtils:
     "w-full h-fit p-5 font-bold text-white mb-5 overflow-hidden rounded-md shadow-md cursor-pointer",
   button:
-    "bg-violet-500 text-white py-3 font-bold rounded-full shadow-md block w-full mt-5 text-center",
+    "bg-violet-500 text-white py-3 font-bold rounded-full shadow-md block w-full mt-5 text-center active:translate-y-0.5",
   plot: "bg-indigo-400 rounded shadow p-5 mx-5 text-ellipsis overflow-hidden w-full max-h-64 overflow-y-scroll scrollbar",
 };
 
@@ -76,7 +76,7 @@ export default function MovieShow({ movieId, bookmark }) {
             </div>
 
             <div className={style.flex + " h-full"}>
-              <div className="bg-indigo-500 rounded shadow p-5 mb-5 h-fit text-white">
+              <div className="bg-indigo-500 rounded shadow p-5 mb-5 h-fit w-52 text-white">
                 <p>IMDb Rating: {movieData.imdbRating}</p>
                 <p>IMDb votes: {movieData.imdbVotes}</p>
                 <p>Box Office: {movieData.BoxOffice}</p>
