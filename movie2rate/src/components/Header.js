@@ -31,8 +31,8 @@ export default function Header({
             movie={movie}
             key={movie.imdbID}
             bookmark
-            onMouseDown={handleMovieId.bind(null, movie.imdbID)}
             handleDeleteBookmark={handleDeleteBookmark}
+            handleMovieId={handleMovieId}
           />
         ))}
       </ul>
@@ -60,7 +60,7 @@ export default function Header({
         onMouseLeave={setShowBookmark.bind(null, !showBookmark)}
       >
         <BsBookmarks className=" w-7 h-7" />
-        {showBookmark && bookmark}
+        {showBookmark ? bookmark : null}
       </div>
     </header>
   );

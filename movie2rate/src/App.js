@@ -6,15 +6,12 @@ import { useEffect, useState } from "react";
 function App() {
   const [query, setQuery] = useState("");
   const [movieId, setMovieId] = useState("");
-  // const [bookmark, setBookmark] = useState([]);
 
   const [bookmark, setBookmark] = useState(() => {
     const movies = JSON.parse(localStorage.getItem("bookmark"));
     if (movies) return movies;
     return [];
   });
-
-  console.log(bookmark);
 
   const handelChange = (e) => setQuery(e.target.value);
   const handleMovieId = (id) => setMovieId(id);

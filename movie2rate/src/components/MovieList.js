@@ -9,11 +9,10 @@ export default function MovieList({
   movie,
   bookmark,
   handleDeleteBookmark,
-  ...rest
+  handleMovieId,
 }) {
-  const handlClick = () => handleDeleteBookmark(movie.imdbID);
   return (
-    <li className={style.list} {...rest}>
+    <li className={style.list} onClick={() => handleMovieId(movie.imdbID)}>
       <img
         src={movie.Poster}
         alt={`${movie.Poster} movie poster`}
@@ -33,7 +32,10 @@ export default function MovieList({
       {bookmark && (
         <button
           className="absolute top-2 right-2 text-black"
-          onClick={handlClick}
+          onClick={(e) => {
+            handleDeleteBookmark(movie.imdbID);
+            e.stopPropagation();
+          }}
         >
           <AiOutlineCloseCircle className="h-6 w-6" />
         </button>

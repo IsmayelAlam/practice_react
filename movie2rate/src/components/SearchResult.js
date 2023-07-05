@@ -28,7 +28,7 @@ export default function SearchResult({ query, handleMovieId }) {
     content = search?.Search?.map((movie) => (
       <MovieList
         movie={movie}
-        onClick={handleMovieId.bind(null, movie.imdbID)}
+        handleMovieId={handleMovieId}
         key={movie.imdbID}
       />
     ));
