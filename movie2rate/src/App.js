@@ -6,11 +6,13 @@ import { useEffect, useState } from "react";
 function App() {
   const [query, setQuery] = useState("");
   const [movieId, setMovieId] = useState("");
-  const [bookmark, setBookmark] = useState([]);
+  // const [bookmark, setBookmark] = useState([]);
 
-  // const [bookmark, setBookmark] = useState(() =>
-  //   JSON.parse(localStorage.getItem("bookmark"))
-  // );
+  const [bookmark, setBookmark] = useState(() => {
+    const movies = JSON.parse(localStorage.getItem("bookmark"));
+    if (movies) return movies;
+    return [];
+  });
 
   console.log(bookmark);
 
@@ -18,6 +20,8 @@ function App() {
   const handleMovieId = (id) => setMovieId(id);
 
   const handleAddBookmark = (movie) => {
+    if (bookmark.some((bookMovie) => movie.imdbID === bookMovie.imdbID)) return;
+
     const movieBookmark = {
       Title: movie.Title,
       Year: movie.Year,
@@ -33,9 +37,9 @@ function App() {
     setBookmark(removed);
   };
 
-  // useEffect(() => {
-  //   localStorage.setItem("bookmark", bookmark);
-  // }, [bookmark]);
+  useEffect(() => {
+    localStorage.setItem("bookmark", JSON.stringify(bookmark));
+  }, [bookmark]);
 
   return (
     <div className="bg-slate-500 w-screen h-screen flex flex-wrap px-20 py-10 overflow-hidden">
