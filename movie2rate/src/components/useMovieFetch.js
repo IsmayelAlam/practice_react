@@ -14,7 +14,7 @@ export default function useMovieFetch(data, type) {
   useEffect(() => {
     const controller = new AbortController();
 
-    if (data <= 3) return;
+    if (data.length < 3) return;
     const fetchMovie = async function () {
       try {
         setIsLoading(true);

@@ -1,4 +1,4 @@
-import { AiOutlineDelete } from "react-icons/ai";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
 const style = {
   list: "flex gap-5 w-full h-28 mb-5 bg-indigo-300 overflow-hidden rounded-md shadow-md cursor-pointer last:mb-0 relative",
@@ -26,7 +26,7 @@ export default function MovieList({ movie, bookmark, ...rest }) {
       </div>
       {bookmark && (
         <button className="absolute top-2 right-2 text-black">
-          <AiOutlineDelete className="h-6 w-6" />
+          <AiOutlineCloseCircle className="h-6 w-6" />
         </button>
       )}
     </li>
