@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import PageNav from "../components/PageNav";
 import styles from "./style/Login.module.css";
 
@@ -33,7 +34,7 @@ export default function Login() {
         </div>
 
         <div>
-          <button>Login</button>
+          <button className="cta">Login</button>
         </div>
       </form>
     </main>
