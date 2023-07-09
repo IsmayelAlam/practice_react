@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import {
   MapContainer,
@@ -9,7 +10,6 @@ import {
 } from "react-leaflet";
 
 import styles from "./style/Map.module.css";
-import { useEffect, useState } from "react";
 import { useCities } from "../contexts/CitiesContext";
 import { useGeolocation } from "../hooks/useGeoLocation";
 import Button from "./Button";
@@ -76,7 +76,7 @@ export default function Map() {
 
 function ChangeCenter({ position }) {
   const map = useMap();
-  map.setView(position, 15);
+  map.setView(position);
 
   return null;
 }
