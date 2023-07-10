@@ -14,7 +14,10 @@ export default function CountryList() {
 
   const countries = cities.reduce((arr, city) => {
     if (arr.map((el) => el.country).includes(city.country)) return arr;
-    return [...arr, { country: city.country, emoji: city.emoji, id: city.id }];
+    return [
+      ...arr,
+      { country: city.countryName, emoji: city.emoji, id: city.id },
+    ];
   }, []);
 
   return (
