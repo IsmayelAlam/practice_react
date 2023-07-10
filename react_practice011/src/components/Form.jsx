@@ -1,9 +1,13 @@
-import Button from "./Button";
-import styles from "./style/Form.module.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
+
 import Spinner from "./Spinner";
+import Button from "./Button";
 import Message from "./Message";
+
+import styles from "./style/Form.module.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -33,6 +37,8 @@ function Form() {
 
   useEffect(
     function () {
+      if (!lat && !lng) return;
+
       async function fetchCityData() {
         try {
           setLoading(true);
@@ -60,12 +66,18 @@ function Form() {
     [lat, lng]
   );
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   if (loading) return <Spinner />;
+
+  if (!lat && !lng) return <Message message="start by clicking on the map" />;
 
   if (error) return <Message message={error} />;
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.row}>
         <label htmlFor="cityName">City name</label>
         <input
@@ -78,10 +90,16 @@ function Form() {
 
       <div className={styles.row}>
         <label htmlFor="date">When did you go to {cityName}?</label>
-        <input
-          id="date"
+        {/* <input
           onChange={(e) => setDate(e.target.value)}
           value={date}
+        /> */}
+
+        <DatePicker
+          id="date"
+          onChange={(date) => setDate(date)}
+          selected={date}
+          dateFormat="dd / mm / yyyy"
         />
       </div>
 
