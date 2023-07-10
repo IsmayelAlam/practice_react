@@ -1,16 +1,3 @@
 {
-  "cities": [
-    {
-      "cityName": "Narayanganj",
-      "countryName": "Bangladesh",
-      "emoji": "🇧🇩",
-      "date": "2023-07-10T05:58:33.139Z",
-      "notes": "home\n",
-      "position": {
-        "lat": "23.624396526141908",
-        "lng": "90.49953466231604"
-      },
-      "id": 1
-    }
-  ]
+  "cities": []
 }
