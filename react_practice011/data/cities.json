@@ -1,76 +1,16 @@
 {
   "cities": [
     {
-      "cityName": "Lisbon",
-      "country": "Portugal",
-      "emoji": "🇵🇹",
-      "date": "2027-10-31T15:59:59.138Z",
-      "notes": "My favorite city so far!",
+      "cityName": "Narayanganj",
+      "countryName": "Bangladesh",
+      "emoji": "🇧🇩",
+      "date": "2023-07-10T05:58:33.139Z",
+      "notes": "home\n",
       "position": {
-        "lat": 38.727881642324164,
-        "lng": -9.140900099907554
+        "lat": "23.624396526141908",
+        "lng": "90.49953466231604"
       },
-      "id": 73930385
-    },
-    {
-      "cityName": "Madrid",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2027-07-15T08:22:53.976Z",
-      "notes": "",
-      "position": {
-        "lat": 40.46635901755316,
-        "lng": -3.7133789062500004
-      },
-      "id": 17806751
-    },
-    {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
-      "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
-      },
-      "id": 98443197
-    },
-    {
-      "cityName": "Greater London",
-      "countryName": "United Kingdom of Great Britain and Northern Ireland (the)",
-      "emoji": "🇬🇧",
-      "date": "2023-07-10T05:41:36.665Z",
-      "notes": "good\n",
-      "position": {
-        "lat": "51.50962464022944",
-        "lng": "-0.08737567624869992"
-      },
-      "id": 98443198
-    },
-    {
-      "cityName": "Rome",
-      "countryName": "Italy",
-      "emoji": "🇮🇹",
-      "date": "2023-07-10T05:42:13.493Z",
-      "notes": "awesome",
-      "position": {
-        "lat": "42.147361266075535",
-        "lng": "12.299189601125999"
-      },
-      "id": 98443199
-    },
-    {
-      "cityName": "Paris",
-      "countryName": "France",
-      "emoji": "🇫🇷",
-      "date": "2023-07-10T05:48:34.324Z",
-      "notes": "awesome",
-      "position": {
-        "lat": "48.83949024825749",
-        "lng": "2.3483223133723468"
-      },
-      "id": 98443200
+      "id": 1
     }
   ]
 }
