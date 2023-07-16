@@ -2,7 +2,6 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createCabin } from "../../services/apiCabins";
 import { toast } from "react-hot-toast";
 import { useForm } from "react-hook-form";
-import styled from "styled-components";
 
 import Input from "../../ui/Input";
 import Form from "../../ui/Form";
@@ -30,7 +29,7 @@ function CreateCabinForm() {
     onError: (err) => toast.error(err.message),
   });
 
-  const submitForm = (data) => mutate(data);
+  const submitForm = (data) => mutate({ ...data, image: data.image[0] });
   const onError = (data) => console.log(data);
 
   return (
@@ -39,6 +38,7 @@ function CreateCabinForm() {
         <Input
           type="text"
           id="name"
+          disabled={isLoading}
           {...register("name", { required: "This field is required" })}
         />
       </FormRow>
@@ -55,6 +55,7 @@ function CreateCabinForm() {
         <Input
           type="number"
           id="regularPrice"
+          disabled={isLoading}
           {...register("regularPrice", { required: "This field is required" })}
         />
       </FormRow>
@@ -64,6 +65,7 @@ function CreateCabinForm() {
           type="number"
           id="discount"
           defaultValue={0}
+          disabled={isLoading}
           {...register("discount", { required: "This field is required" })}
         />
       </FormRow>
@@ -72,18 +74,22 @@ function CreateCabinForm() {
         <Textarea
           type="number"
           id="description"
+          disabled={isLoading}
           defaultValue=""
           {...register("description", { required: "This field is required" })}
         />
       </FormRow>
 
-      <FormRow>
-        {/* <Label htmlFor="image">Cabin photo</Label>
-        <FileInput id="image" accept="image/*" {...register("image")} /> */}
+      <FormRow label="Images">
+        <FileInput
+          id="image"
+          disabled={isLoading}
+          accept="image/*"
+          {...register("image")}
+        />
       </FormRow>
 
       <FormRow>
-        {/* type is an HTML attribute! */}
         <Button variation="secondary" type="reset">
           Cancel
         </Button>
