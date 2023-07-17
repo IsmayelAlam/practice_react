@@ -22,7 +22,9 @@ function CreateCabinForm({ cabinToEdit = {} }) {
 
   const { isCreating, createCabin } = useCreateCabin();
 
-  const { editCabin } = useEditCabin();
+  const { editCabin, isEditingForm } = useEditCabin();
+
+  const disableInput = isCreating || isEditingForm;
 
   const submitForm = (data) => {
     const image = typeof data.image === "string" ? data.image : data.image[0];
@@ -36,7 +38,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
       createCabin({ ...data, image }, { onSuccess: () => reset() });
     }
   };
-  const onError = (data) => console.log(data);
+  const onError = (data) => console.error(data);
 
   return (
     <Form onSubmit={handleSubmit(submitForm, onError)}>
@@ -44,7 +46,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
         <Input
           type="text"
           id="name"
-          disabled={isCreating}
+          disabled={disableInput}
           {...register("name", { required: "This field is required" })}
         />
       </FormRow>
@@ -61,7 +63,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
         <Input
           type="number"
           id="regularPrice"
-          disabled={isCreating}
+          disabled={disableInput}
           {...register("regularPrice", { required: "This field is required" })}
         />
       </FormRow>
@@ -71,7 +73,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
           type="number"
           id="discount"
           defaultValue={0}
-          disabled={isCreating}
+          disabled={disableInput}
           {...register("discount", { required: "This field is required" })}
         />
       </FormRow>
@@ -80,7 +82,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
         <Textarea
           type="number"
           id="description"
-          disabled={isCreating}
+          disabled={disableInput}
           defaultValue=""
           {...register("description", { required: "This field is required" })}
         />
@@ -89,7 +91,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
       <FormRow label="Images">
         <FileInput
           id="image"
-          disabled={isCreating}
+          disabled={disableInput}
           accept="image/*"
           {...register("image", {
             required: isEditing ? false : "This field is required",
@@ -101,7 +103,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
         <Button variation="secondary" type="reset">
           Cancel
         </Button>
-        <Button disabled={isCreating}>
+        <Button disabled={disableInput}>
           {isEditing ? "Edit cabin" : "Add cabin"}
         </Button>
       </FormRow>
