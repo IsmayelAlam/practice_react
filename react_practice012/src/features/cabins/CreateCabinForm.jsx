@@ -9,7 +9,7 @@ import FormRow from "../../ui/FormRow";
 import useCreateCabin from "./useCreateCabin";
 import useEditCabin from "./useEditCabin";
 
-function CreateCabinForm({ cabinToEdit = {} }) {
+function CreateCabinForm({ cabinToEdit = {}, onClose }) {
   const { id: editId, ...editValues } = cabinToEdit;
 
   const isEditing = Boolean(editId);
@@ -26,22 +26,30 @@ function CreateCabinForm({ cabinToEdit = {} }) {
 
   const disableInput = isCreating || isEditingForm;
 
+  function success() {
+    reset();
+    onClose?.();
+  }
+
   const submitForm = (data) => {
     const image = typeof data.image === "string" ? data.image : data.image[0];
 
     if (isEditing) {
       editCabin(
         { newCabin: { ...data, image }, id: editId },
-        { onSuccess: () => reset() }
+        { onSuccess: () => success() }
       );
     } else {
-      createCabin({ ...data, image }, { onSuccess: () => reset() });
+      createCabin({ ...data, image }, { onSuccess: () => success() });
     }
   };
   const onError = (data) => console.error(data);
 
   return (
-    <Form onSubmit={handleSubmit(submitForm, onError)}>
+    <Form
+      onSubmit={handleSubmit(submitForm, onError)}
+      type={onClose ? "modal" : "regular"}
+    >
       <FormRow label="Cabin name" error={errors?.name?.message}>
         <Input
           type="text"
@@ -100,7 +108,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
       </FormRow>
 
       <FormRow>
-        <Button variation="secondary" type="reset">
+        <Button variation="secondary" type="reset" onClick={onClose}>
           Cancel
         </Button>
         <Button disabled={disableInput}>
