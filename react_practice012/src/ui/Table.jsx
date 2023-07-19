@@ -72,7 +72,6 @@ function Table({ columns, children }) {
 function Header({ children }) {
   const { columns } = useContext(TableContext);
 
-  console.log(CommonRow);
   return (
     <StyledHeader role="row " columns={columns}>
       {children}
