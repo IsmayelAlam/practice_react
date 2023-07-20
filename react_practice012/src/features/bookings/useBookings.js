@@ -2,7 +2,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getBookings } from "../../services/apiBookings";
 import { useSearchParams } from "react-router-dom";
 
-export default function useBooking() {
+export default function useBookings() {
   const queryClient = useQueryClient();
   const [searchParams] = useSearchParams();
 
