@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import Input from "./Input";
-
 const Form = styled.div`
   display: grid;
   align-items: center;
