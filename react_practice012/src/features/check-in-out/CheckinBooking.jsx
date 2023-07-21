@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import Checkbox from "../../ui/Checkbox";
 import { formatCurrency } from "../../utils/helpers";
 import useCheckin from "./useCheckin";
+import useSettings from "../settings/useSettings";
 
 const Box = styled.div`
   /* Box */
@@ -25,8 +26,10 @@ const Box = styled.div`
 
 function CheckinBooking() {
   const [paid, setPaid] = useState(false);
+  const [addBreakfast, setBreakfast] = useState(false);
 
   const { booking = {}, isLoading } = useBooking();
+  const { settings, isLoading: isSettings } = useSettings();
 
   const { checkin, isLoading: isChecking } = useCheckin();
 
@@ -45,9 +48,22 @@ function CheckinBooking() {
     numNights,
   } = booking;
 
+  const optionalBreakfast = settings.breakfastPrice * numNights * numGuests;
+
   function handleCheckin() {
     if (!paid) return;
-    checkin(bookingId);
+    if (addBreakfast) {
+      checkin({
+        bookingId,
+        breakfast: {
+          hasBreakfast: true,
+          extrasPrice: optionalBreakfast,
+          totalPrice: totalPrice + optionalBreakfast,
+        },
+      });
+    } else {
+      checkin({ bookingId, breakfast: {} });
+    }
   }
 
   return (
@@ -59,14 +75,31 @@ function CheckinBooking() {
 
       <BookingDataBox booking={booking} />
 
+      {hasBreakfast || (
+        <Box>
+          <Checkbox
+            checked={addBreakfast}
+            onChange={() => {
+              setBreakfast((add) => !add);
+              setPaid(false);
+            }}
+            disabled={isSettings || addBreakfast}
+          >
+            would like to add breakfast for {formatCurrency(optionalBreakfast)}
+          </Checkbox>
+        </Box>
+      )}
+
       <Box>
         <Checkbox
           checked={paid}
           onChange={setPaid.bind(null, !paid)}
           disabled={paid || isChecking}
         >
-          I confirm that {guests.fullName} has paid the total amount of{" "}
-          {formatCurrency(totalPrice)}
+          I confirm that {guests.fullName} has paid the total amount of
+          {addBreakfast
+            ? formatCurrency(totalPrice + optionalBreakfast)
+            : formatCurrency(totalPrice)}
         </Checkbox>
       </Box>
 

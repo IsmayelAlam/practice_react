@@ -104,8 +104,9 @@ export async function updateBooking(id, obj) {
     .from("bookings")
     .update(obj)
     .eq("id", id)
-    .select()
-    .single();
+    .select();
+
+  console.log(obj);
 
   if (error) {
     console.error(error);
