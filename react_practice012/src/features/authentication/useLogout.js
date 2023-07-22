@@ -12,7 +12,6 @@ export default function useLogout() {
     mutationFn: logoutApi,
     onSuccess: () => {
       queryClient.removeQueries();
-
       toast.success("logout successfully");
       navigate("/login", { replace: true });
     },
