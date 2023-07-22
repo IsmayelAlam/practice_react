@@ -1,22 +1,22 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { signup as sighupApi } from "../../services/apiAuth";
 
-import { login as loginAPI } from "../../services/apiAuth";
-
-export default function useLogin() {
+export default function useSignup() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
-  const { isLoading, mutate: login } = useMutation({
-    mutationFn: ({ email, password }) => loginAPI({ email, password }),
+  const { isLoading, mutate: signup } = useMutation({
+    mutationFn: ({ email, password, fullName }) =>
+      sighupApi({ fullName, email, password }),
     onSuccess: (data) => {
       queryClient.setQueryData(["user"], data.user);
-      toast.success("login successfully");
+      toast.success("sighup successfully");
       navigate("/dashboard");
     },
     onError: (err) => toast.error(err.message),
   });
 
-  return { isLoading, login };
+  return { isLoading, signup };
 }
