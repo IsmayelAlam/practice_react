@@ -22,7 +22,7 @@ export default function DashboardLayout() {
   return (
     <StyledDashboardLayout>
       <Stats bookings={bookings} confirmedStays={confirmedStays} />
-      {/* <DurationChart /> */}
+      <DurationChart confirmedStays={confirmedStays} />
       <SalesChart bookings={bookings} numDays={numDays} />
     </StyledDashboardLayout>
   );
